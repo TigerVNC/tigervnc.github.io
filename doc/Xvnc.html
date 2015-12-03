@@ -1,0 +1,571 @@
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Wed Dec  2 10:43:14 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>Xvnc</title>
+
+</head>
+<body>
+
+<h1 align="center">Xvnc</h1>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Xvnc &minus;
+the X VNC server</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>Xvnc</b>
+[<i>options</i>] :<i>display#</i></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>Xvnc</b></i>
+is the X VNC (Virtual Network Computing) server. It is based
+on a standard X server, but it has a &quot;virtual&quot;
+screen rather than a physical one. X applications display
+themselves on it as if it were a normal X display, but they
+can only be accessed via a VNC viewer - see
+<b>vncviewer</b>(1).</p>
+
+<p style="margin-left:11%; margin-top: 1em">So Xvnc is
+really two servers in one. To the applications it is an X
+server, and to the remote VNC users it is a VNC server. By
+convention we have arranged that the VNC server display
+number will be the same as the X server display number,
+which means you can use eg. snoopy:2 to refer to display 2
+on machine &quot;snoopy&quot; in both the X world and the
+VNC world.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The best way of
+starting <b>Xvnc</b> is via the <b>vncserver</b> script.
+This sets up the environment appropriately and runs some X
+applications to get you going. See the manual page for
+<b>vncserver</b>(1) for more information.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>Xvnc</b>
+takes lots of options - running <b>Xvnc -help</b> gives a
+list. Many of these are standard X server options, which are
+described in the <b>Xserver</b>(1) manual page. In addition
+to options which can only be set via the command-line, there
+are also &quot;parameters&quot; which can be set both via
+the command-line and through the <b>vncconfig</b>(1)
+program. <b><br>
+&minus;geometry</b> <i>width</i><b>x</b><i>height</i></p>
+
+<p style="margin-left:22%;">Specify the size of the desktop
+to be created. Default is 1024x768.</p>
+
+<p style="margin-left:11%;"><b>&minus;depth</b>
+<i>depth</i></p>
+
+<p style="margin-left:22%;">Specify the pixel depth in bits
+of the desktop to be created. Default is 24, other possible
+values are 8, 15, and 16 - anything else is likely to cause
+strange behaviour by applications.</p>
+
+<p style="margin-left:11%;"><b>&minus;pixelformat</b>
+<i>format</i></p>
+
+<p style="margin-left:22%;">Specify pixel format for server
+to use (BGRnnn or RGBnnn). The default for depth 8 is BGR233
+(meaning the most significant two bits represent blue, the
+next three green, and the least significant three represent
+red), the default for depth 16 is RGB565 and for depth 24 is
+RGB888.</p>
+
+<p style="margin-left:11%;"><b>&minus;interface</b> <i>IP
+address</i></p>
+
+<p style="margin-left:22%;">Listen on interface. By default
+Xvnc listens on all available interfaces.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>&minus;inetd</b></p></td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p>This significantly changes Xvnc&rsquo;s behaviour so
+that it can be launched from inetd. See the section below on
+usage with inetd.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>&minus;help</b></p></td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p>List all the options and parameters</p></td></tr>
+</table>
+
+<h2>PARAMETERS
+<a name="PARAMETERS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">VNC parameters
+can be set both via the command-line and through the
+<b>vncconfig</b>(1) program, and with a VNC-enabled Xorg
+server via Options entries in the xorg.conf file.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Parameters can
+be turned on with -<i>param</i> or off with -<i>param</i>=0.
+Parameters which take a value can be specified as -<i>param
+value</i>. Other valid forms are
+<i>param</i><b>=</b><i>value</i> -<i>param</i>=<i>value</i>
+--<i>param</i>=<i>value</i>. Parameter names are
+case-insensitive. <b><br>
+&minus;desktop</b> <i>desktop-name</i></p>
+
+<p style="margin-left:22%;">Each desktop has a name which
+may be displayed by the viewer. It defaults to
+&quot;x11&quot;.</p>
+
+<p style="margin-left:11%;"><b>&minus;rfbport</b>
+<i>port</i></p>
+
+<p style="margin-left:22%;">Specifies the TCP port on which
+Xvnc listens for connections from viewers (the protocol used
+in VNC is called RFB - &quot;remote framebuffer&quot;). The
+default is 5900 plus the display number.</p>
+
+<p style="margin-left:11%;"><b>&minus;rfbwait</b>
+<i>time</i><b>, &minus;ClientWaitTimeMillis</b>
+<i>time</i></p>
+
+<p style="margin-left:22%; margin-top: 1em">Time in
+milliseconds to wait for a viewer which is blocking Xvnc.
+This is necessary because Xvnc is single-threaded and
+sometimes blocks until the viewer has finished sending or
+receiving a message - note that this does not mean an update
+will be aborted after this time. Default is 20000 (20
+seconds).</p>
+
+<p style="margin-left:11%;"><b>&minus;httpd</b>
+<i>directory</i></p>
+
+<p style="margin-left:22%;">Run a mini-HTTP server which
+serves files from the given directory. Normally the
+directory will contain the classes for the Java viewer. In
+addition, files with a .vnc extension will have certain
+substitutions made so that a single installation of the Java
+VNC viewer can be served by separate instances of Xvnc.</p>
+
+<p style="margin-left:11%;"><b>&minus;httpPort</b>
+<i>port</i></p>
+
+<p style="margin-left:22%;">Specifies the port on which the
+mini-HTTP server runs. Default is 5800 plus the display
+number.</p>
+
+<p style="margin-left:11%;"><b>&minus;rfbauth</b>
+<i>passwd-file</i><b>, &minus;PasswordFile</b>
+<i>passwd-file</i></p>
+
+<p style="margin-left:22%;">Specifies the file containing
+the password used to authenticate viewers. The file is
+accessed each time a connection comes in, so it can be
+changed on the fly via <b>vncpasswd</b>(1).</p>
+
+<p style="margin-left:11%;"><b>&minus;DeferUpdate</b>
+<i>time</i></p>
+
+<p style="margin-left:22%;">Xvnc uses a &quot;deferred
+update&quot; mechanism which enhances performance in many
+cases. After any change to the framebuffer, Xvnc waits for
+this number of milliseconds (default 1) before sending an
+update to any waiting clients. This means that more changes
+tend to get coalesced together in a single update. Setting
+it to 0 results in the same behaviour as earlier versions of
+Xvnc, where the first change to the framebuffer causes an
+immediate update to any waiting clients.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;AlwaysSetDeferUpdateTimer</b></p>
+
+<p style="margin-left:22%;">Keep delaying sending the
+screen update to the client(s) each time the screen is
+updated. Otherwise the delay is from the first update.
+Default is off.</p>
+
+<p style="margin-left:11%;"><b>&minus;SendCutText</b></p>
+
+<p style="margin-left:22%;">Send clipboard changes to
+clients (default is on). Note that you must also run
+<b>vncconfig</b>(1) to get the clipboard to work.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;AcceptCutText</b></p>
+
+<p style="margin-left:22%;">Accept clipboard updates from
+clients (default is on). Note that you must also run
+<b>vncconfig</b>(1) to get the clipboard to work.</p>
+
+<p style="margin-left:11%;"><b>&minus;MaxCutText</b>
+<i>bytes</i></p>
+
+<p style="margin-left:22%;">The maximum size of a clipboard
+update that will be accepted from a client. Default is
+<b>262144</b>.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;AcceptPointerEvents</b></p>
+
+<p style="margin-left:22%;">Accept pointer press and
+release events from clients (default is on).</p>
+
+
+<p style="margin-left:11%;"><b>&minus;AcceptKeyEvents</b></p>
+
+<p style="margin-left:22%;">Accept key press and release
+events from clients (default is on).</p>
+
+
+<p style="margin-left:11%;"><b>&minus;DisconnectClients</b></p>
+
+<p style="margin-left:22%;">Disconnect existing clients if
+an incoming connection is non-shared (default is on). If
+<b>DisconnectClients</b> is false, then a new non-shared
+connection will be refused while there is a client active.
+When combined with <b>NeverShared</b> this means only one
+client is allowed at a time.</p>
+
+<p style="margin-left:11%;"><b>&minus;NeverShared</b></p>
+
+<p style="margin-left:22%;">Never treat incoming
+connections as shared, regardless of the client-specified
+setting (default is off).</p>
+
+<p style="margin-left:11%;"><b>&minus;AlwaysShared</b></p>
+
+<p style="margin-left:22%;">Always treat incoming
+connections as shared, regardless of the client-specified
+setting (default is off).</p>
+
+<p style="margin-left:11%;"><b>&minus;Protocol3.3</b></p>
+
+<p style="margin-left:22%;">Always use protocol version 3.3
+for backwards compatibility with badly-behaved clients
+(default is off).</p>
+
+<p style="margin-left:11%;"><b>&minus;CompareFB</b></p>
+
+<p style="margin-left:22%;">Perform pixel comparison on
+framebuffer to reduce unnecessary updates (default is
+on).</p>
+
+<p style="margin-left:11%;"><b>&minus;ZlibLevel</b></p>
+
+<p style="margin-left:22%;">Zlib compression level for ZRLE
+encoding (it does not affect Tight encoding). Acceptable
+values are between 0 and 9. Default is to use the standard
+compression level provided by the <b>zlib</b>(3) compression
+library.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;ImprovedHextile</b></p>
+
+<p style="margin-left:22%;">Use improved compression
+algorithm for Hextile encoding which achieves better
+compression ratios by the cost of using slightly more CPU
+time. Default is on.</p>
+
+<p style="margin-left:11%;"><b>&minus;SecurityTypes</b>
+<i>sec-types</i></p>
+
+<p style="margin-left:22%;">Specify which security scheme
+to use for incoming connections. Valid values are a comma
+separated list of <b>None</b>, <b>VncAuth</b>, <b>Plain</b>,
+<b>TLSNone</b>, <b>TLSVnc</b>, <b>TLSPlain</b>,
+<b>X509None</b>, <b>X509Vnc</b> and <b>X509Plain</b>.
+Default is <b>VncAuth,TLSVnc</b>.</p>
+
+<p style="margin-left:11%;"><b>&minus;Password</b>
+<i>password</i></p>
+
+<p style="margin-left:22%;">Obfuscated binary encoding of
+the password which clients must supply to access the server.
+Using this parameter is insecure, use <b>PasswordFile</b>
+parameter instead.</p>
+
+<p style="margin-left:11%;"><b>&minus;PlainUsers</b>
+<i>user-list</i></p>
+
+<p style="margin-left:22%;">A comma separated list of user
+names that are allowed to authenticate via any of the
+&quot;Plain&quot; security types (Plain, TLSPlain, etc.).
+Specify <b>*</b> to allow any user to authenticate using
+this security type. Default is to deny all users.</p>
+
+<p style="margin-left:11%;"><b>&minus;pam_service</b>
+<i>name</i><b>, &minus;PAMService</b> <i>name</i></p>
+
+<p style="margin-left:22%;">PAM service name to use when
+authentication users using any of the &quot;Plain&quot;
+security types. Default is <b>vnc</b>.</p>
+
+<p style="margin-left:11%;"><b>&minus;X509Cert</b>
+<i>path</i></p>
+
+<p style="margin-left:22%;">Path to a X509 certificate in
+PEM format to be used for all X509 based security types
+(X509None, X509Vnc, etc.).</p>
+
+<p style="margin-left:11%;"><b>&minus;X509Key</b>
+<i>path</i></p>
+
+<p style="margin-left:22%;">Private key counter part to the
+certificate given in <b>X509Cert</b>. Must also be in PEM
+format.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;BlacklistThreshold</b>
+<i>count</i></p>
+
+<p style="margin-left:22%;">The number of unauthenticated
+connection attempts allowed from any individual host before
+that host is black-listed. Default is 5.</p>
+
+<p style="margin-left:11%;"><b>&minus;BlacklistTimeout</b>
+<i>seconds</i></p>
+
+<p style="margin-left:22%;">The initial timeout applied
+when a host is first black-listed. The host cannot
+re-attempt a connection until the timeout expires. Default
+is 10.</p>
+
+<p style="margin-left:11%;"><b>&minus;IdleTimeout</b>
+<i>seconds</i></p>
+
+<p style="margin-left:22%;">The number of seconds after
+which an idle VNC connection will be dropped (default is 0,
+which means that idle connections will never be
+dropped).</p>
+
+
+<p style="margin-left:11%;"><b>&minus;MaxDisconnectionTime</b>
+<i>seconds</i></p>
+
+<p style="margin-left:22%;">Terminate when no client has
+been connected for <i>N</i> seconds. Default is 0.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;MaxConnectionTime</b>
+<i>seconds</i></p>
+
+<p style="margin-left:22%;">Terminate when a client has
+been connected for <i>N</i> seconds. Default is 0.</p>
+
+<p style="margin-left:11%;"><b>&minus;MaxIdleTime</b>
+<i>seconds</i></p>
+
+<p style="margin-left:22%;">Terminate after <i>N</i>
+seconds of user inactivity. Default is 0.</p>
+
+<p style="margin-left:11%;"><b>&minus;QueryConnect</b></p>
+
+<p style="margin-left:22%;">Prompts the user of the desktop
+to explicitly accept or reject incoming connections. This is
+most useful when using the vnc.so module or
+<b>x0vncserver</b>(1) program to access an existing X
+desktop via VNC.</p>
+
+<p style="margin-left:22%; margin-top: 1em">The
+<b>vncconfig</b>(1) program must be running on the desktop
+in order for QueryConnect to be supported by the
+<b>vnc.so</b>(1) module or <b>Xvnc</b>(1) program. The
+<b>x0vncserver</b>(1) program does not require
+<b>vncconfig</b>(1) to be running.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;QueryConnectTimeout</b>
+<i>seconds</i></p>
+
+<p style="margin-left:22%;">Number of seconds to show the
+Accept Connection dialog before rejecting the connection.
+Default is <b>10</b>.</p>
+
+<p style="margin-left:11%;"><b>&minus;localhost</b></p>
+
+<p style="margin-left:22%;">Only allow connections from the
+same machine. Useful if you use SSH and want to stop non-SSH
+connections from any other hosts.</p>
+
+<p style="margin-left:11%;"><b>&minus;Log</b>
+<i>logname</i><b>:</b><i>dest</i><b>:</b><i>level</i></p>
+
+<p style="margin-left:22%;">Configures the debug log
+settings. <i>dest</i> can currently be <b>stderr</b>,
+<b>stdout</b> or <b>syslog</b>, and <i>level</i> is between
+0 and 100, 100 meaning most verbose output. <i>logname</i>
+is usually <b>*</b> meaning all, but you can target a
+specific source file if you know the name of its
+&quot;LogWriter&quot;. Default is <b>*:stderr:30</b>.</p>
+
+<p style="margin-left:11%;"><b>&minus;RemapKeys</b>
+<i>mapping</i></p>
+
+<p style="margin-left:22%;">Sets up a keyboard mapping.
+<i>mapping</i> is a comma-separated string of character
+mappings, each of the form <i>char</i>-&gt;<i>char</i>, or
+<i>char</i>&lt;&gt;<i>char</i>, where <i>char</i> is a
+hexadecimal keysym. For example, to exchange the &quot; and
+@ symbols you would specify the following:</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="26%"></td>
+<td width="31%">
+
+
+<p>RemapKeys=0x22&lt;&gt;0x40</p></td>
+<td width="43%">
+</td></tr>
+</table>
+
+
+<p style="margin-left:11%;"><b>&minus;AvoidShiftNumLock</b></p>
+
+<p style="margin-left:26%;">Key affected by NumLock often
+require a fake Shift to be inserted in order for the correct
+symbol to be generated. Turning on this option avoids these
+extra fake Shift events but may result in a slightly
+different symbol (e.g. a Return instead of a keypad
+Enter).</p>
+
+<h2>USAGE WITH INETD
+<a name="USAGE WITH INETD"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">By configuring
+the <b>inetd</b>(1) service appropriately, Xvnc can be
+launched on demand when a connection comes in, rather than
+having to be started manually. When given the <b>-inetd</b>
+option, instead of listening for TCP connections on a given
+port it uses its standard input and standard output. There
+are two modes controlled by the wait/nowait entry in the
+inetd.conf file.</p>
+
+<p style="margin-left:11%; margin-top: 1em">In the nowait
+mode, Xvnc uses its standard input and output directly as
+the connection to a viewer. It never has a listening socket,
+so cannot accept further connections from viewers (it can
+however connect out to listening viewers by use of the
+vncconfig program). Further viewer connections to the same
+TCP port result in inetd spawning off a new Xvnc to deal
+with each connection. When the connection to the viewer
+dies, the Xvnc and any associated X clients die. This
+behaviour is most useful when combined with the XDMCP
+options -query and -once. An typical example in inetd.conf
+might be (all on one line):</p>
+
+<p style="margin-left:11%; margin-top: 1em">5950 stream tcp
+nowait nobody /usr/local/bin/Xvnc Xvnc -inetd -query
+localhost -once securitytypes=none</p>
+
+<p style="margin-left:11%; margin-top: 1em">In this example
+a viewer connection to :50 will result in a new Xvnc for
+that connection which should display the standard XDM login
+screen on that machine. Because the user needs to login via
+XDM, it is usually OK to accept connections without a VNC
+password in this case.</p>
+
+<p style="margin-left:11%; margin-top: 1em">In the wait
+mode, when the first connection comes in, inetd gives the
+listening socket to Xvnc. This means that for a given TCP
+port, there is only ever one Xvnc at a time. Further viewer
+connections to the same port are accepted by the same Xvnc
+in the normal way. Even when the original connection is
+broken, the Xvnc will continue to run. If this is used with
+the XDMCP options -query and -once, the Xvnc and associated
+X clients will die when the user logs out of the X session
+in the normal way. It is important to use a VNC password in
+this case. A typical entry in inetd.conf might be:</p>
+
+<p style="margin-left:11%; margin-top: 1em">5951 stream tcp
+wait james /usr/local/bin/Xvnc Xvnc -inetd -query localhost
+-once passwordFile=/home/james/.vnc/passwd</p>
+
+<p style="margin-left:11%; margin-top: 1em">In fact
+typically, you would have one entry for each user who uses
+VNC regularly, each of whom has their own dedicated TCP port
+which they use. In this example, when user &quot;james&quot;
+connects to :51, he enters his VNC password, then gets the
+XDM login screen where he logs in in the normal way.
+However, unlike the previous example, if he disconnects, the
+session remains persistent, and when he reconnects he will
+get the same session back again. When he logs out of the X
+session, the Xvnc will die, but of course a new one will be
+created automatically the next time he connects.</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>vncconfig</b>(1),
+<b>vncpasswd</b>(1), <b>vncserver</b>(1),
+<b>vncviewer</b>(1), <b>Xserver</b>(1), <b>inetd</b>(1) <br>
+http://www.tigervnc.org</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Tristan
+Richardson, RealVNC Ltd. and others.</p>
+
+<p style="margin-left:11%; margin-top: 1em">VNC was
+originally developed by the RealVNC team while at Olivetti
+Research Ltd / AT&amp;T Laboratories Cambridge. TightVNC
+additions were implemented by Constantin Kaplinsky. Many
+other people have since participated in development, testing
+and support. This manual is part of the TigerVNC software
+suite.</p>
+<hr>
+</body>
+</html>

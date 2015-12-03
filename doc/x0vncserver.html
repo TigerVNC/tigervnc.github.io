@@ -1,0 +1,428 @@
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Wed Dec  2 10:42:49 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>X0VNCSERVER</title>
+
+</head>
+<body>
+
+<h1 align="center">X0VNCSERVER</h1>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">x0vncserver
+&minus; TigerVNC Server for X displays</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>x0vncserver</b>
+[<i>options</i>] <b><br>
+x0vncserver -version</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>x0vncserver</b>
+is a TigerVNC Server which makes any X display remotely
+accessible via VNC, TigerVNC or compatible viewers. Unlike
+<b>Xvnc</b>(1), it does not create a virtual display.
+Instead, it just shares an existing X server (typically,
+that one connected to the physical screen).</p>
+
+<p style="margin-left:11%; margin-top: 1em">XDamage will be
+used if the existing X server supports it. Otherwise
+<b>x0vncserver</b> will fall back to polling the screen for
+changes.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>x0vncserver</b>
+interprets the command line as a list of parameters with
+optional values. Running <b>x0vncserver -h</b> will show a
+list of all valid parameters with short descriptions. All
+parameters are optional, but normally you would have to use
+the <b>PasswordFile</b> parameter (see its description
+below).</p>
+
+<p style="margin-left:11%; margin-top: 1em">There are
+several forms of specifying parameters in the command line
+(here we use &lsquo;<i>SomeParameter</i>&rsquo; as an
+example parameter name): <b><br>
+-</b><i>SomeParameter</i></p>
+
+<p style="margin-left:22%;">Enable the parameter, turn the
+feature on. This form can be used with parameters that
+simply enable or disable some feature.</p>
+
+
+<p style="margin-left:11%;"><b>-</b><i>SomeParameter</i><b>=0</b></p>
+
+<p style="margin-left:22%;">Disable the parameter, turn the
+feature off.</p>
+
+
+<p style="margin-left:11%;"><b>-</b><i>SomeParameter</i><b>=</b><i>value</i></p>
+
+<p style="margin-left:22%;">Assign the specified
+<i>value</i> to the parameter. The leading dash can be
+omitted, or it can be doubled if desired (like in GNU-style
+long options).</p>
+
+<p style="margin-left:11%; margin-top: 1em">Parameter names
+are case-insensitive, their order in the command line can be
+arbitrary.</p>
+
+<h2>PARAMETERS
+<a name="PARAMETERS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>display</b></p>
+
+<p style="margin-left:22%;">The X display name. If not
+specified, it defaults to the value of the DISPLAY
+environment variable.</p>
+
+<p style="margin-left:11%;"><b>rfbport</b></p>
+
+<p style="margin-left:22%;">TCP port to listen for incoming
+VNC connections (RFB protocol). The default port is
+5900.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>Log</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Specifies which log output should be directed to which
+target logger, and the level of output to log. Format is
+<i>log</i>:<i>target</i>:<i>level</i>. Default is
+<b>*:stderr:30</b> (log everything to stderr, set log level
+to 30). Log level should be a value between 0 and 100,
+higher levels produce more output.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><b>HostsFile</b></p>
+
+<p style="margin-left:22%;">This parameter allows to
+specify a file name with IP access control rules. The file
+should include one rule per line, and the rule format is one
+of the following: +<i>address</i>/<i>prefix</i> (accept
+connections from the specified address group),
+-<i>address</i>/<i>prefix</i> (reject connections) or
+?<i>address</i>/<i>prefix</i> (query the local user). The
+first rule matching the IP address determines the action to
+be performed. Rules that include only an action sign (+, -
+or ?) will match any IP address. <i>Prefix</i> is optional
+and is specified as a number of bits (e.g. /24). Default is
+to accept connections from any IP address.</p>
+
+<p style="margin-left:11%;"><b>SecurityTypes</b></p>
+
+<p style="margin-left:22%;">Specify which security scheme
+to use for incoming connections. Valid values are a comma
+separated list of <b>None</b>, <b>VncAuth</b>, <b>Plain</b>,
+<b>TLSNone</b>, <b>TLSVnc</b>, <b>TLSPlain</b>,
+<b>X509None</b>, <b>X509Vnc</b> and <b>X509Plain</b>.
+Default is <b>VncAuth,TLSVnc</b>.</p>
+
+<p style="margin-left:11%;"><b>rfbauth,
+PasswordFile</b></p>
+
+<p style="margin-left:22%;">Password file for VNC
+authentication. There is no default, you should specify the
+password file explicitly. Password file should be created
+with the <b>vncpasswd</b>(1) utility.</p>
+
+<p style="margin-left:11%;"><b>Password</b></p>
+
+<p style="margin-left:22%;">Obfuscated binary encoding of
+the password which clients must supply to access the server.
+Using this parameter is insecure, use <b>PasswordFile</b>
+parameter instead.</p>
+
+<p style="margin-left:11%;"><b>PlainUsers</b></p>
+
+<p style="margin-left:22%;">A comma separated list of user
+names that are allowed to authenticate via any of the
+&quot;Plain&quot; security types (Plain, TLSPlain, etc.).
+Specify <b>*</b> to allow any user to authenticate using
+this security type. Default is to deny all users.</p>
+
+<p style="margin-left:11%;"><b>pam_service,
+PAMService</b></p>
+
+<p style="margin-left:22%;">PAM service name to use when
+authentication users using any of the &quot;Plain&quot;
+security types. Default is <b>vnc</b>.</p>
+
+<p style="margin-left:11%;"><b>X509Cert</b></p>
+
+<p style="margin-left:22%;">Path to a X509 certificate in
+PEM format to be used for all X509 based security types
+(X509None, X509Vnc, etc.).</p>
+
+<p style="margin-left:11%;"><b>X509Key</b></p>
+
+<p style="margin-left:22%;">Private key counter part to the
+certificate given in <b>X509Cert</b>. Must also be in PEM
+format.</p>
+
+<p style="margin-left:11%;"><b>BlacklistThreshold</b></p>
+
+<p style="margin-left:22%;">The number of unauthenticated
+connection attempts allowed from any individual host before
+that host is black-listed. Default is 5.</p>
+
+<p style="margin-left:11%;"><b>BlacklistTimeout</b></p>
+
+<p style="margin-left:22%;">The initial timeout applied
+when a host is first black-listed. The host cannot
+re-attempt a connection until the timeout expires. Default
+is 10.</p>
+
+<p style="margin-left:11%;"><b>QueryConnect</b></p>
+
+<p style="margin-left:22%;">Prompt the local user to accept
+or reject incoming connections. Default is off.</p>
+
+<p style="margin-left:11%;"><b>QueryConnectTimeout</b></p>
+
+<p style="margin-left:22%;">Number of seconds to show the
+Accept Connection dialog before rejecting the connection.
+Default is 10.</p>
+
+<p style="margin-left:11%;"><b>AlwaysShared</b></p>
+
+<p style="margin-left:22%;">Always treat incoming
+connections as shared, regardless of the client-specified
+setting. Default is off.</p>
+
+<p style="margin-left:11%;"><b>NeverShared</b></p>
+
+<p style="margin-left:22%;">Never treat incoming
+connections as shared, regardless of the client-specified
+setting. Default is off.</p>
+
+<p style="margin-left:11%;"><b>DisconnectClients</b></p>
+
+<p style="margin-left:22%;">Disconnect existing clients if
+an incoming connection is non-shared. If combined with
+<b>NeverShared</b> then new connections will be refused
+while there is a client active. Default is on.</p>
+
+<p style="margin-left:11%;"><b>AcceptKeyEvents</b></p>
+
+<p style="margin-left:22%;">Accept key press and release
+events from clients. Default is on.</p>
+
+<p style="margin-left:11%;"><b>AcceptPointerEvents</b></p>
+
+<p style="margin-left:22%;">Accept pointer events from
+clients. Default is on.</p>
+
+<p style="margin-left:11%;"><b>RemapKeys</b></p>
+
+<p style="margin-left:22%;">Comma-separated list of
+incoming keysyms to remap. Mappings are expressed as two hex
+values, prefixed by <b>0x</b>, and separated by <b>-&gt;</b>
+(&lsquo;dash&rsquo; and &lsquo;greater than&rsquo;
+characters).</p>
+
+<p style="margin-left:11%;"><b>Protocol3.3</b></p>
+
+<p style="margin-left:22%;">Always use RFB protocol version
+3.3 for backwards compatibility with badly-behaved clients.
+Default is off.</p>
+
+<p style="margin-left:11%;"><b>Geometry</b></p>
+
+<p style="margin-left:22%;">This option specifies the
+screen area that will be shown to VNC clients. The format is
+<i>width</i><b>x</b><i>height</i><b>+</b><i>xoffset</i><b>+</b><i>yoffset</i>
+, where &lsquo;+&rsquo; signs can be replaced with
+&lsquo;&minus;&rsquo; signs to specify offsets from the
+right and/or from the bottom of the screen. Offsets are
+optional, +0+0 is assumed by default (top left corner). If
+the argument is empty, full screen is shown to VNC clients
+(this is the default).</p>
+
+<p style="margin-left:11%;"><b>MaxProcessorUsage</b></p>
+
+<p style="margin-left:22%;">Maximum percentage of CPU time
+to be consumed when polling the screen. Default is 35.</p>
+
+<p style="margin-left:11%;"><b>PollingCycle</b></p>
+
+<p style="margin-left:22%;">Milliseconds per one polling
+cycle. Actual interval may be dynamically adjusted to
+satisfy <b>MaxProcessorUsage</b> setting. Default is 30.</p>
+
+<p style="margin-left:11%;"><b>DeferUpdate</b></p>
+
+<p style="margin-left:22%;">x0vncserver uses a
+&quot;deferred update&quot; mechanism which enhances
+performance in many cases. After any change to the
+framebuffer, x0vncserver waits for this number of
+milliseconds (default 1) before sending an update to any
+waiting clients. This means that more changes tend to get
+coalesced together in a single update. Setting it to 0
+results in the same behaviour as earlier versions of
+x0vncserver, where the first change to the framebuffer
+causes an immediate update to any waiting clients.</p>
+
+
+<p style="margin-left:11%;"><b>AlwaysSetDeferUpdateTimer</b></p>
+
+<p style="margin-left:22%;">Keep delaying sending the
+screen update to the client(s) each time the screen is
+updated. Otherwise the delay is from the first update.
+Default is off.</p>
+
+<p style="margin-left:11%;"><b>CompareFB</b></p>
+
+<p style="margin-left:22%;">Perform pixel comparison on
+framebuffer to reduce unnecessary updates. Can be either
+<b>0</b> (off), <b>1</b> (always) or <b>2</b> (auto).
+Default is <b>2</b>.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>UseSHM</b></p></td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p>Use MIT-SHM extension if available. Using that extension
+accelerates reading the screen. Default is on.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><b>OverlayMode</b></p>
+
+<p style="margin-left:22%;">Use overlay mode in IRIX or
+Solaris (does not have effect in other systems). This
+enables system-specific access to complete full-color
+version of the screen (the default X visual often provides
+256 colors). Also, in overlay mode, <b>x0vncserver</b> can
+show correct mouse cursor. Default is on.</p>
+
+<p style="margin-left:11%;"><b>ZlibLevel</b></p>
+
+<p style="margin-left:22%;">Zlib compression level for ZRLE
+encoding (it does not affect Tight encoding). Acceptable
+values are between 0 and 9. Default is to use the standard
+compression level provided by the <b>zlib</b>(3) compression
+library.</p>
+
+<p style="margin-left:11%;"><b>ImprovedHextile</b></p>
+
+<p style="margin-left:22%;">Use improved compression
+algorithm for Hextile encoding which achieves better
+compression ratios by the cost of using slightly more CPU
+time. Default is on.</p>
+
+<p style="margin-left:11%;"><b>IdleTimeout</b></p>
+
+<p style="margin-left:22%;">The number of seconds after
+which an idle VNC connection will be dropped (zero means no
+timeout). Default is 0.</p>
+
+
+<p style="margin-left:11%;"><b>MaxDisconnectionTime</b></p>
+
+<p style="margin-left:22%;">Terminate when no client has
+been connected for <i>N</i> seconds. Default is 0.</p>
+
+<p style="margin-left:11%;"><b>MaxConnectionTime</b></p>
+
+<p style="margin-left:22%;">Terminate when a client has
+been connected for <i>N</i> seconds. Default is 0.</p>
+
+<p style="margin-left:11%;"><b>MaxIdleTime</b></p>
+
+<p style="margin-left:22%;">Terminate after <i>N</i>
+seconds of user inactivity. Default is 0.</p>
+
+
+<p style="margin-left:11%;"><b>ClientWaitTimeMillis</b></p>
+
+<p style="margin-left:22%;">The number of milliseconds to
+wait for a client which is no longer responding. Default is
+20000.</p>
+
+<p style="margin-left:11%;"><b>AcceptCutText <br>
+SendCutText <br>
+MaxCutText</b></p>
+
+<p style="margin-left:22%;">Currently unused.</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>Xvnc</b>(1),
+<b>vncpasswd</b>(1), <br>
+http://www.tigervnc.org/</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Constantin
+Kaplinsky and others.</p>
+
+<p style="margin-left:11%; margin-top: 1em">VNC was
+originally developed by the RealVNC team while at Olivetti
+Research Ltd / AT&amp;T Laboratories Cambridge. TightVNC
+additions were implemented by Constantin Kaplinsky. Many
+other people have since participated in development, testing
+and support. This manual is part of the TigerVNC software
+suite.</p>
+<hr>
+</body>
+</html>
