@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Wed Dec  2 10:43:14 2015 -->
+<!-- CreationDate: Mon Sep 19 09:32:34 2016 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -473,6 +473,29 @@ symbol to be generated. Turning on this option avoids these
 extra fake Shift events but may result in a slightly
 different symbol (e.g. a Return instead of a keypad
 Enter).</p>
+
+
+<p style="margin-left:11%;"><b>&minus;AllowOverride</b></p>
+
+<p style="margin-left:26%;">Comma separated list of
+parameters that can be modified using VNC extension.
+Parameters can be modified for example using
+<b>vncconfig</b>(1) program from inside a running
+session.</p>
+
+<p style="margin-left:26%; margin-top: 1em">Allowing
+override of parameters such as <b>PAMService</b> or
+<b>PasswordFile</b> can negatively impact security if Xvnc
+runs under different user than the programs allowed to
+override the parameters.</p>
+
+<p style="margin-left:26%; margin-top: 1em">When
+<b>NoClipboard</b> parameter is set, allowing override of
+<b>SendCutText</b> and <b>AcceptCutText</b> has no
+effect.</p>
+
+<p style="margin-left:26%; margin-top: 1em">Default is
+<b>desktop,AcceptPointerEvents,SendCutText,AcceptCutText</b>.</p>
 
 <h2>USAGE WITH INETD
 <a name="USAGE WITH INETD"></a>

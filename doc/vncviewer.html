@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Wed Dec  2 10:41:06 2015 -->
+<!-- CreationDate: Mon Sep 19 09:32:43 2016 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -281,6 +281,11 @@ be combined with <b>&minus;Shared.</b></p>
 <p style="margin-left:22%;">Accept clipboard changes from
 the server. Default is on.</p>
 
+<p style="margin-left:11%;"><b>&minus;SetPrimary</b></p>
+
+<p style="margin-left:22%;">Set the primary selection as
+well as the clipboard selection. Default is on.</p>
+
 
 <p style="margin-left:11%;"><b>&minus;SendClipboard</b></p>
 
@@ -289,9 +294,9 @@ server. Default is on.</p>
 
 <p style="margin-left:11%;"><b>&minus;SendPrimary</b></p>
 
-<p style="margin-left:22%;">Send the primary selection and
-cut buffer to the server as well as the clipboard selection.
-Default is on.</p>
+<p style="margin-left:22%;">Send the primary selection to
+the server as well as the clipboard selection. Default is
+on.</p>
 
 <p style="margin-left:11%;"><b>&minus;Maximize</b></p>
 
@@ -452,8 +457,12 @@ respectively.</p>
 
 <p style="margin-left:11%; margin-top: 1em">$HOME/.vnc/default.tigervnc</p>
 
-<p style="margin-left:22%;">Default configuration
-options.</p>
+<p style="margin-left:22%;">Default configuration options.
+This file must have a &quot;magic&quot; first line of
+&quot;TigerVNC Configuration file Version 1.0&quot; (without
+quotes), followed by simple &lt;setting&gt;=&lt;value&gt;
+pairs of your choosing. The available settings are those
+shown in this man page.</p>
 
 <p style="margin-left:11%;">$HOME/.vnc/x509_ca.pem</p>
 
