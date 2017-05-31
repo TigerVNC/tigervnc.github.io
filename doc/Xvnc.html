@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Mon Sep 19 09:32:34 2016 -->
+<!-- CreationDate: Wed May 31 14:47:36 2017 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -228,18 +228,11 @@ screen update to the client(s) each time the screen is
 updated. Otherwise the delay is from the first update.
 Default is off.</p>
 
-<p style="margin-left:11%;"><b>&minus;SendCutText</b></p>
-
-<p style="margin-left:22%;">Send clipboard changes to
-clients (default is on). Note that you must also run
-<b>vncconfig</b>(1) to get the clipboard to work.</p>
-
 
 <p style="margin-left:11%;"><b>&minus;AcceptCutText</b></p>
 
 <p style="margin-left:22%;">Accept clipboard updates from
-clients (default is on). Note that you must also run
-<b>vncconfig</b>(1) to get the clipboard to work.</p>
+clients (default is on).</p>
 
 <p style="margin-left:11%;"><b>&minus;MaxCutText</b>
 <i>bytes</i></p>
@@ -247,6 +240,17 @@ clients (default is on). Note that you must also run
 <p style="margin-left:22%;">The maximum size of a clipboard
 update that will be accepted from a client. Default is
 <b>262144</b>.</p>
+
+<p style="margin-left:11%;"><b>&minus;SendCutText</b></p>
+
+<p style="margin-left:22%;">Send clipboard changes to
+clients (default is on).</p>
+
+<p style="margin-left:11%;"><b>&minus;SendPrimary</b></p>
+
+<p style="margin-left:22%;">Send the primary selection and
+cut buffer to the server as well as the clipboard selection.
+Default is on.</p>
 
 
 <p style="margin-left:11%;"><b>&minus;AcceptPointerEvents</b></p>
@@ -495,7 +499,7 @@ override the parameters.</p>
 effect.</p>
 
 <p style="margin-left:26%; margin-top: 1em">Default is
-<b>desktop,AcceptPointerEvents,SendCutText,AcceptCutText</b>.</p>
+<b>desktop,AcceptPointerEvents,SendCutText,AcceptCutText,SendPrimary,SetPrimary</b>.</p>
 
 <h2>USAGE WITH INETD
 <a name="USAGE WITH INETD"></a>

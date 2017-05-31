@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Wed Dec  2 10:41:29 2015 -->
+<!-- CreationDate: Wed May 31 14:46:37 2017 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -65,16 +65,12 @@ cannot be used to control VNC servers prior to version
 <p style="margin-left:11%; margin-top: 1em">When run with
 no options, it runs as a kind of &quot;helper&quot;
 application for Xvnc. Its main purpose when run in this mode
-is to support clipboard transfer to and from the VNC
-viewer(s). Note that without a running instance of
-<b>vncconfig</b> there will be no clipboard support. It puts
-up a window with some checkboxes which can be used to
-disable clipboard transfers if required (in the future there
-may be more functions available from this window). The
-<b>-nowin</b> flag can be used if you always want clipboard
-support but don&rsquo;t wish to clutter the desktop with
-this window - alternatively the <b>-iconic</b> option can be
-used to make it iconified by default.</p>
+is to query the user how new connections should be handled
+(provided this feature is enabled). The <b>-nowin</b> flag
+can be used if you always want the query support but
+don&rsquo;t wish to clutter the desktop with the settings
+window - alternatively the <b>-iconic</b> option can be used
+to make it iconified by default.</p>
 
 <p style="margin-left:11%; margin-top: 1em">When run in any
 other mode, <b>vncconfig</b> is a one-shot program used to
