@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Wed Dec  2 10:42:49 2015 -->
+<!-- CreationDate: Mon Jul 16 16:13:25 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -107,39 +107,57 @@ arbitrary.</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>display</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>&minus;display</b>
+<i>display</i></p>
 
 <p style="margin-left:22%;">The X display name. If not
 specified, it defaults to the value of the DISPLAY
 environment variable.</p>
 
-<p style="margin-left:11%;"><b>rfbport</b></p>
+<p style="margin-left:11%;"><b>&minus;rfbport</b>
+<i>port</i></p>
 
-<p style="margin-left:22%;">TCP port to listen for incoming
-VNC connections (RFB protocol). The default port is
-5900.</p>
+<p style="margin-left:22%;">Specifies the TCP port on which
+x0vncserver listens for connections from viewers (the
+protocol used in VNC is called RFB - &quot;remote
+framebuffer&quot;). The default port is 5900.</p>
 
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="4%">
+<p style="margin-left:11%;"><b>&minus;UseIPv4</b></p>
 
+<p style="margin-left:22%;">Use IPv4 for incoming and
+outgoing connections. Default is on.</p>
 
-<p><b>Log</b></p></td>
-<td width="7%"></td>
-<td width="78%">
+<p style="margin-left:11%;"><b>&minus;UseIPv6</b></p>
 
+<p style="margin-left:22%;">Use IPv6 for incoming and
+outgoing connections. Default is on.</p>
 
-<p>Specifies which log output should be directed to which
-target logger, and the level of output to log. Format is
-<i>log</i>:<i>target</i>:<i>level</i>. Default is
-<b>*:stderr:30</b> (log everything to stderr, set log level
-to 30). Log level should be a value between 0 and 100,
-higher levels produce more output.</p></td></tr>
-</table>
+<p style="margin-left:11%;"><b>&minus;rfbunixpath</b>
+<i>path</i></p>
 
-<p style="margin-left:11%;"><b>HostsFile</b></p>
+<p style="margin-left:22%;">Specifies the path of a Unix
+domain socket on which x0vncserver listens for connections
+from viewers, instead of listening on a TCP port.</p>
+
+<p style="margin-left:11%;"><b>&minus;rfbunixmode</b>
+<i>mode</i></p>
+
+<p style="margin-left:22%;">Specifies the mode of the Unix
+domain socket. The default is 0600.</p>
+
+<p style="margin-left:11%;"><b>&minus;Log</b>
+<i>logname</i><b>:</b><i>dest</i><b>:</b><i>level</i></p>
+
+<p style="margin-left:22%;">Configures the debug log
+settings. <i>dest</i> can currently be <b>stderr</b>,
+<b>stdout</b> or <b>syslog</b>, and <i>level</i> is between
+0 and 100, 100 meaning most verbose output. <i>logname</i>
+is usually <b>*</b> meaning all, but you can target a
+specific source file if you know the name of its
+&quot;LogWriter&quot;. Default is <b>*:stderr:30</b>.</p>
+
+<p style="margin-left:11%;"><b>&minus;HostsFile</b>
+<i>filename</i></p>
 
 <p style="margin-left:22%;">This parameter allows to
 specify a file name with IP access control rules. The file
@@ -154,7 +172,8 @@ or ?) will match any IP address. <i>Prefix</i> is optional
 and is specified as a number of bits (e.g. /24). Default is
 to accept connections from any IP address.</p>
 
-<p style="margin-left:11%;"><b>SecurityTypes</b></p>
+<p style="margin-left:11%;"><b>&minus;SecurityTypes</b>
+<i>sec-types</i></p>
 
 <p style="margin-left:22%;">Specify which security scheme
 to use for incoming connections. Valid values are a comma
@@ -163,22 +182,27 @@ separated list of <b>None</b>, <b>VncAuth</b>, <b>Plain</b>,
 <b>X509None</b>, <b>X509Vnc</b> and <b>X509Plain</b>.
 Default is <b>VncAuth,TLSVnc</b>.</p>
 
-<p style="margin-left:11%;"><b>rfbauth,
-PasswordFile</b></p>
+<p style="margin-left:11%;"><b>&minus;rfbauth</b>
+<i>passwd-file</i><b>, &minus;PasswordFile</b>
+<i>passwd-file</i></p>
 
 <p style="margin-left:22%;">Password file for VNC
 authentication. There is no default, you should specify the
 password file explicitly. Password file should be created
-with the <b>vncpasswd</b>(1) utility.</p>
+with the <b>vncpasswd</b>(1) utility. The file is accessed
+each time a connection comes in, so it can be changed on the
+fly.</p>
 
-<p style="margin-left:11%;"><b>Password</b></p>
+<p style="margin-left:11%;"><b>&minus;Password</b>
+<i>password</i></p>
 
 <p style="margin-left:22%;">Obfuscated binary encoding of
 the password which clients must supply to access the server.
 Using this parameter is insecure, use <b>PasswordFile</b>
 parameter instead.</p>
 
-<p style="margin-left:11%;"><b>PlainUsers</b></p>
+<p style="margin-left:11%;"><b>&minus;PlainUsers</b>
+<i>user-list</i></p>
 
 <p style="margin-left:22%;">A comma separated list of user
 names that are allowed to authenticate via any of the
@@ -186,93 +210,128 @@ names that are allowed to authenticate via any of the
 Specify <b>*</b> to allow any user to authenticate using
 this security type. Default is to deny all users.</p>
 
-<p style="margin-left:11%;"><b>pam_service,
-PAMService</b></p>
+<p style="margin-left:11%;"><b>&minus;pam_service</b>
+<i>name</i><b>, &minus;PAMService</b> <i>name</i></p>
 
 <p style="margin-left:22%;">PAM service name to use when
 authentication users using any of the &quot;Plain&quot;
 security types. Default is <b>vnc</b>.</p>
 
-<p style="margin-left:11%;"><b>X509Cert</b></p>
+<p style="margin-left:11%;"><b>&minus;X509Cert</b>
+<i>path</i></p>
 
 <p style="margin-left:22%;">Path to a X509 certificate in
 PEM format to be used for all X509 based security types
 (X509None, X509Vnc, etc.).</p>
 
-<p style="margin-left:11%;"><b>X509Key</b></p>
+<p style="margin-left:11%;"><b>&minus;X509Key</b>
+<i>path</i></p>
 
 <p style="margin-left:22%;">Private key counter part to the
 certificate given in <b>X509Cert</b>. Must also be in PEM
 format.</p>
 
-<p style="margin-left:11%;"><b>BlacklistThreshold</b></p>
+<p style="margin-left:11%;"><b>&minus;GnuTLSPriority</b>
+<i>priority</i></p>
+
+<p style="margin-left:22%;">GnuTLS priority string that
+controls the TLS session&acirc;s handshake algorithms. See
+the GnuTLS manual for possible values. Default is
+<b>NORMAL</b>.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;BlacklistThreshold</b>
+<i>count</i></p>
 
 <p style="margin-left:22%;">The number of unauthenticated
 connection attempts allowed from any individual host before
 that host is black-listed. Default is 5.</p>
 
-<p style="margin-left:11%;"><b>BlacklistTimeout</b></p>
+<p style="margin-left:11%;"><b>&minus;BlacklistTimeout</b>
+<i>seconds</i></p>
 
 <p style="margin-left:22%;">The initial timeout applied
 when a host is first black-listed. The host cannot
 re-attempt a connection until the timeout expires. Default
 is 10.</p>
 
-<p style="margin-left:11%;"><b>QueryConnect</b></p>
+<p style="margin-left:11%;"><b>&minus;QueryConnect</b></p>
 
-<p style="margin-left:22%;">Prompt the local user to accept
-or reject incoming connections. Default is off.</p>
+<p style="margin-left:22%;">Prompts the user of the desktop
+to explicitly accept or reject incoming connections. Default
+is off.</p>
 
-<p style="margin-left:11%;"><b>QueryConnectTimeout</b></p>
+
+<p style="margin-left:11%;"><b>&minus;QueryConnectTimeout</b>
+<i>seconds</i></p>
 
 <p style="margin-left:22%;">Number of seconds to show the
 Accept Connection dialog before rejecting the connection.
-Default is 10.</p>
+Default is <b>10</b>.</p>
 
-<p style="margin-left:11%;"><b>AlwaysShared</b></p>
+<p style="margin-left:11%;"><b>&minus;AlwaysShared</b></p>
 
 <p style="margin-left:22%;">Always treat incoming
 connections as shared, regardless of the client-specified
 setting. Default is off.</p>
 
-<p style="margin-left:11%;"><b>NeverShared</b></p>
+<p style="margin-left:11%;"><b>&minus;NeverShared</b></p>
 
 <p style="margin-left:22%;">Never treat incoming
 connections as shared, regardless of the client-specified
 setting. Default is off.</p>
 
-<p style="margin-left:11%;"><b>DisconnectClients</b></p>
+
+<p style="margin-left:11%;"><b>&minus;DisconnectClients</b></p>
 
 <p style="margin-left:22%;">Disconnect existing clients if
-an incoming connection is non-shared. If combined with
-<b>NeverShared</b> then new connections will be refused
-while there is a client active. Default is on.</p>
+an incoming connection is non-shared. Default is on. If
+<b>DisconnectClients</b> is false, then a new non-shared
+connection will be refused while there is a client active.
+When combined with <b>NeverShared</b> this means only one
+client is allowed at a time.</p>
 
-<p style="margin-left:11%;"><b>AcceptKeyEvents</b></p>
+
+<p style="margin-left:11%;"><b>&minus;AcceptKeyEvents</b></p>
 
 <p style="margin-left:22%;">Accept key press and release
 events from clients. Default is on.</p>
 
-<p style="margin-left:11%;"><b>AcceptPointerEvents</b></p>
 
-<p style="margin-left:22%;">Accept pointer events from
-clients. Default is on.</p>
+<p style="margin-left:11%;"><b>&minus;AcceptPointerEvents</b></p>
 
-<p style="margin-left:11%;"><b>RemapKeys</b></p>
+<p style="margin-left:22%;">Accept pointer press and
+release events from clients. Default is on.</p>
 
-<p style="margin-left:22%;">Comma-separated list of
-incoming keysyms to remap. Mappings are expressed as two hex
-values, prefixed by <b>0x</b>, and separated by <b>-&gt;</b>
-(&lsquo;dash&rsquo; and &lsquo;greater than&rsquo;
-characters).</p>
+<p style="margin-left:11%;"><b>&minus;RemapKeys</b>
+<i>mapping</i></p>
 
-<p style="margin-left:11%;"><b>Protocol3.3</b></p>
+<p style="margin-left:22%;">Sets up a keyboard mapping.
+<i>mapping</i> is a comma-separated string of character
+mappings, each of the form <i>char</i>-&gt;<i>char</i>, or
+<i>char</i>&lt;&gt;<i>char</i>, where <i>char</i> is a
+hexadecimal keysym. For example, to exchange the &quot; and
+@ symbols you would specify the following:</p>
 
-<p style="margin-left:22%;">Always use RFB protocol version
-3.3 for backwards compatibility with badly-behaved clients.
+
+<p style="margin-left:26%; margin-top: 1em">RemapKeys=0x22&lt;&gt;0x40</p>
+
+<p style="margin-left:11%;"><b>&minus;RawKeyboard</b></p>
+
+<p style="margin-left:22%;">Send keyboard events straight
+through and avoid mapping them to the current keyboard
+layout. This effectively makes the keyboard behave according
+to the layout configured on the server instead of the layout
+configured on the client. Default is off.</p>
+
+<p style="margin-left:11%;"><b>&minus;Protocol3.3</b></p>
+
+<p style="margin-left:22%;">Always use protocol version 3.3
+for backwards compatibility with badly-behaved clients.
 Default is off.</p>
 
-<p style="margin-left:11%;"><b>Geometry</b></p>
+<p style="margin-left:11%;"><b>&minus;Geometry</b>
+<i>geometry</i></p>
 
 <p style="margin-left:22%;">This option specifies the
 screen area that will be shown to VNC clients. The format is
@@ -284,71 +343,46 @@ optional, +0+0 is assumed by default (top left corner). If
 the argument is empty, full screen is shown to VNC clients
 (this is the default).</p>
 
-<p style="margin-left:11%;"><b>MaxProcessorUsage</b></p>
+
+<p style="margin-left:11%;"><b>&minus;MaxProcessorUsage</b>
+<i>percent</i></p>
 
 <p style="margin-left:22%;">Maximum percentage of CPU time
 to be consumed when polling the screen. Default is 35.</p>
 
-<p style="margin-left:11%;"><b>PollingCycle</b></p>
+<p style="margin-left:11%;"><b>&minus;PollingCycle</b>
+<i>milliseconds</i></p>
 
 <p style="margin-left:22%;">Milliseconds per one polling
 cycle. Actual interval may be dynamically adjusted to
 satisfy <b>MaxProcessorUsage</b> setting. Default is 30.</p>
 
-<p style="margin-left:11%;"><b>DeferUpdate</b></p>
+<p style="margin-left:11%;"><b>&minus;FrameRate</b>
+<i>fps</i></p>
 
-<p style="margin-left:22%;">x0vncserver uses a
-&quot;deferred update&quot; mechanism which enhances
-performance in many cases. After any change to the
-framebuffer, x0vncserver waits for this number of
-milliseconds (default 1) before sending an update to any
-waiting clients. This means that more changes tend to get
-coalesced together in a single update. Setting it to 0
-results in the same behaviour as earlier versions of
-x0vncserver, where the first change to the framebuffer
-causes an immediate update to any waiting clients.</p>
+<p style="margin-left:22%;">The maximum number of updates
+per second sent to each client. If the screen updates any
+faster then those changes will be aggregated and sent in a
+single update to the client. Note that this only controls
+the maximum rate and a client may get a lower rate when
+resources are limited. Default is <b>60</b>.</p>
 
-
-<p style="margin-left:11%;"><b>AlwaysSetDeferUpdateTimer</b></p>
-
-<p style="margin-left:22%;">Keep delaying sending the
-screen update to the client(s) each time the screen is
-updated. Otherwise the delay is from the first update.
-Default is off.</p>
-
-<p style="margin-left:11%;"><b>CompareFB</b></p>
+<p style="margin-left:11%;"><b>&minus;CompareFB</b>
+<i>mode</i></p>
 
 <p style="margin-left:22%;">Perform pixel comparison on
 framebuffer to reduce unnecessary updates. Can be either
 <b>0</b> (off), <b>1</b> (always) or <b>2</b> (auto).
 Default is <b>2</b>.</p>
 
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
+<p style="margin-left:11%;"><b>&minus;UseSHM</b></p>
 
+<p style="margin-left:22%;">Use MIT-SHM extension if
+available. Using that extension accelerates reading the
+screen. Default is on.</p>
 
-<p><b>UseSHM</b></p></td>
-<td width="2%"></td>
-<td width="78%">
-
-
-<p>Use MIT-SHM extension if available. Using that extension
-accelerates reading the screen. Default is on.</p></td></tr>
-</table>
-
-<p style="margin-left:11%;"><b>OverlayMode</b></p>
-
-<p style="margin-left:22%;">Use overlay mode in IRIX or
-Solaris (does not have effect in other systems). This
-enables system-specific access to complete full-color
-version of the screen (the default X visual often provides
-256 colors). Also, in overlay mode, <b>x0vncserver</b> can
-show correct mouse cursor. Default is on.</p>
-
-<p style="margin-left:11%;"><b>ZlibLevel</b></p>
+<p style="margin-left:11%;"><b>&minus;ZlibLevel</b>
+<i>level</i></p>
 
 <p style="margin-left:22%;">Zlib compression level for ZRLE
 encoding (it does not affect Tight encoding). Acceptable
@@ -356,45 +390,55 @@ values are between 0 and 9. Default is to use the standard
 compression level provided by the <b>zlib</b>(3) compression
 library.</p>
 
-<p style="margin-left:11%;"><b>ImprovedHextile</b></p>
+
+<p style="margin-left:11%;"><b>&minus;ImprovedHextile</b></p>
 
 <p style="margin-left:22%;">Use improved compression
 algorithm for Hextile encoding which achieves better
 compression ratios by the cost of using slightly more CPU
 time. Default is on.</p>
 
-<p style="margin-left:11%;"><b>IdleTimeout</b></p>
+<p style="margin-left:11%;"><b>&minus;IdleTimeout</b>
+<i>seconds</i></p>
 
 <p style="margin-left:22%;">The number of seconds after
-which an idle VNC connection will be dropped (zero means no
-timeout). Default is 0.</p>
+which an idle VNC connection will be dropped. Default is 0,
+which means that idle connections will never be dropped.</p>
 
 
-<p style="margin-left:11%;"><b>MaxDisconnectionTime</b></p>
+<p style="margin-left:11%;"><b>&minus;MaxDisconnectionTime</b>
+<i>seconds</i></p>
 
 <p style="margin-left:22%;">Terminate when no client has
 been connected for <i>N</i> seconds. Default is 0.</p>
 
-<p style="margin-left:11%;"><b>MaxConnectionTime</b></p>
+
+<p style="margin-left:11%;"><b>&minus;MaxConnectionTime</b>
+<i>seconds</i></p>
 
 <p style="margin-left:22%;">Terminate when a client has
 been connected for <i>N</i> seconds. Default is 0.</p>
 
-<p style="margin-left:11%;"><b>MaxIdleTime</b></p>
+<p style="margin-left:11%;"><b>&minus;MaxIdleTime</b>
+<i>seconds</i></p>
 
 <p style="margin-left:22%;">Terminate after <i>N</i>
 seconds of user inactivity. Default is 0.</p>
 
 
-<p style="margin-left:11%;"><b>ClientWaitTimeMillis</b></p>
+<p style="margin-left:11%;"><b>&minus;ClientWaitTimeMillis</b>
+<i>time</i></p>
 
-<p style="margin-left:22%;">The number of milliseconds to
-wait for a client which is no longer responding. Default is
-20000.</p>
+<p style="margin-left:22%;">Time in milliseconds to wait
+for a viewer which is blocking the server. This is necessary
+because the server is single-threaded and sometimes blocks
+until the viewer has finished sending or receiving a message
+- note that this does not mean an update will be aborted
+after this time. Default is 20000 (20 seconds).</p>
 
-<p style="margin-left:11%;"><b>AcceptCutText <br>
-SendCutText <br>
-MaxCutText</b></p>
+<p style="margin-left:11%;"><b>&minus;AcceptCutText <br>
+&minus;SendCutText <br>
+&minus;MaxCutText</b></p>
 
 <p style="margin-left:22%;">Currently unused.</p>
 

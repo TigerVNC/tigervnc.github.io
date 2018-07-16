@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Wed May 31 14:47:36 2017 -->
+<!-- CreationDate: Mon Jul 16 16:13:39 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -169,17 +169,39 @@ Xvnc listens for connections from viewers (the protocol used
 in VNC is called RFB - &quot;remote framebuffer&quot;). The
 default is 5900 plus the display number.</p>
 
+<p style="margin-left:11%;"><b>&minus;UseIPv4</b></p>
+
+<p style="margin-left:22%;">Use IPv4 for incoming and
+outgoing connections. Default is on.</p>
+
+<p style="margin-left:11%;"><b>&minus;UseIPv6</b></p>
+
+<p style="margin-left:22%;">Use IPv6 for incoming and
+outgoing connections. Default is on.</p>
+
+<p style="margin-left:11%;"><b>&minus;rfbunixpath</b>
+<i>path</i></p>
+
+<p style="margin-left:22%;">Specifies the path of a Unix
+domain socket on which Xvnc listens for connections from
+viewers, instead of listening on a TCP port.</p>
+
+<p style="margin-left:11%;"><b>&minus;rfbunixmode</b>
+<i>mode</i></p>
+
+<p style="margin-left:22%;">Specifies the mode of the Unix
+domain socket. The default is 0600.</p>
+
 <p style="margin-left:11%;"><b>&minus;rfbwait</b>
 <i>time</i><b>, &minus;ClientWaitTimeMillis</b>
 <i>time</i></p>
 
-<p style="margin-left:22%; margin-top: 1em">Time in
-milliseconds to wait for a viewer which is blocking Xvnc.
-This is necessary because Xvnc is single-threaded and
-sometimes blocks until the viewer has finished sending or
-receiving a message - note that this does not mean an update
-will be aborted after this time. Default is 20000 (20
-seconds).</p>
+<p style="margin-left:22%;">Time in milliseconds to wait
+for a viewer which is blocking the server. This is necessary
+because the server is single-threaded and sometimes blocks
+until the viewer has finished sending or receiving a message
+- note that this does not mean an update will be aborted
+after this time. Default is 20000 (20 seconds).</p>
 
 <p style="margin-left:11%;"><b>&minus;httpd</b>
 <i>directory</i></p>
@@ -202,37 +224,18 @@ number.</p>
 <i>passwd-file</i><b>, &minus;PasswordFile</b>
 <i>passwd-file</i></p>
 
-<p style="margin-left:22%;">Specifies the file containing
-the password used to authenticate viewers. The file is
-accessed each time a connection comes in, so it can be
-changed on the fly via <b>vncpasswd</b>(1).</p>
-
-<p style="margin-left:11%;"><b>&minus;DeferUpdate</b>
-<i>time</i></p>
-
-<p style="margin-left:22%;">Xvnc uses a &quot;deferred
-update&quot; mechanism which enhances performance in many
-cases. After any change to the framebuffer, Xvnc waits for
-this number of milliseconds (default 1) before sending an
-update to any waiting clients. This means that more changes
-tend to get coalesced together in a single update. Setting
-it to 0 results in the same behaviour as earlier versions of
-Xvnc, where the first change to the framebuffer causes an
-immediate update to any waiting clients.</p>
-
-
-<p style="margin-left:11%;"><b>&minus;AlwaysSetDeferUpdateTimer</b></p>
-
-<p style="margin-left:22%;">Keep delaying sending the
-screen update to the client(s) each time the screen is
-updated. Otherwise the delay is from the first update.
-Default is off.</p>
+<p style="margin-left:22%;">Password file for VNC
+authentication. There is no default, you should specify the
+password file explicitly. Password file should be created
+with the <b>vncpasswd</b>(1) utility. The file is accessed
+each time a connection comes in, so it can be changed on the
+fly.</p>
 
 
 <p style="margin-left:11%;"><b>&minus;AcceptCutText</b></p>
 
 <p style="margin-left:22%;">Accept clipboard updates from
-clients (default is on).</p>
+clients. Default is on.</p>
 
 <p style="margin-left:11%;"><b>&minus;MaxCutText</b>
 <i>bytes</i></p>
@@ -244,7 +247,7 @@ update that will be accepted from a client. Default is
 <p style="margin-left:11%;"><b>&minus;SendCutText</b></p>
 
 <p style="margin-left:22%;">Send clipboard changes to
-clients (default is on).</p>
+clients. Default is on.</p>
 
 <p style="margin-left:11%;"><b>&minus;SendPrimary</b></p>
 
@@ -256,19 +259,25 @@ Default is on.</p>
 <p style="margin-left:11%;"><b>&minus;AcceptPointerEvents</b></p>
 
 <p style="margin-left:22%;">Accept pointer press and
-release events from clients (default is on).</p>
+release events from clients. Default is on.</p>
 
 
 <p style="margin-left:11%;"><b>&minus;AcceptKeyEvents</b></p>
 
 <p style="margin-left:22%;">Accept key press and release
-events from clients (default is on).</p>
+events from clients. Default is on.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;AcceptSetDesktopSize</b></p>
+
+<p style="margin-left:22%;">Accept requests to resize the
+size of the desktop. Default is on.</p>
 
 
 <p style="margin-left:11%;"><b>&minus;DisconnectClients</b></p>
 
 <p style="margin-left:22%;">Disconnect existing clients if
-an incoming connection is non-shared (default is on). If
+an incoming connection is non-shared. Default is on. If
 <b>DisconnectClients</b> is false, then a new non-shared
 connection will be refused while there is a client active.
 When combined with <b>NeverShared</b> this means only one
@@ -278,27 +287,40 @@ client is allowed at a time.</p>
 
 <p style="margin-left:22%;">Never treat incoming
 connections as shared, regardless of the client-specified
-setting (default is off).</p>
+setting. Default is off.</p>
 
 <p style="margin-left:11%;"><b>&minus;AlwaysShared</b></p>
 
 <p style="margin-left:22%;">Always treat incoming
 connections as shared, regardless of the client-specified
-setting (default is off).</p>
+setting. Default is off.</p>
 
 <p style="margin-left:11%;"><b>&minus;Protocol3.3</b></p>
 
 <p style="margin-left:22%;">Always use protocol version 3.3
-for backwards compatibility with badly-behaved clients
-(default is off).</p>
+for backwards compatibility with badly-behaved clients.
+Default is off.</p>
 
-<p style="margin-left:11%;"><b>&minus;CompareFB</b></p>
+<p style="margin-left:11%;"><b>&minus;FrameRate</b>
+<i>fps</i></p>
+
+<p style="margin-left:22%;">The maximum number of updates
+per second sent to each client. If the screen updates any
+faster then those changes will be aggregated and sent in a
+single update to the client. Note that this only controls
+the maximum rate and a client may get a lower rate when
+resources are limited. Default is <b>60</b>.</p>
+
+<p style="margin-left:11%;"><b>&minus;CompareFB</b>
+<i>mode</i></p>
 
 <p style="margin-left:22%;">Perform pixel comparison on
-framebuffer to reduce unnecessary updates (default is
-on).</p>
+framebuffer to reduce unnecessary updates. Can be either
+<b>0</b> (off), <b>1</b> (always) or <b>2</b> (auto).
+Default is <b>2</b>.</p>
 
-<p style="margin-left:11%;"><b>&minus;ZlibLevel</b></p>
+<p style="margin-left:11%;"><b>&minus;ZlibLevel</b>
+<i>level</i></p>
 
 <p style="margin-left:22%;">Zlib compression level for ZRLE
 encoding (it does not affect Tight encoding). Acceptable
@@ -362,6 +384,14 @@ PEM format to be used for all X509 based security types
 certificate given in <b>X509Cert</b>. Must also be in PEM
 format.</p>
 
+<p style="margin-left:11%;"><b>&minus;GnuTLSPriority</b>
+<i>priority</i></p>
+
+<p style="margin-left:22%;">GnuTLS priority string that
+controls the TLS session&acirc;s handshake algorithms. See
+the GnuTLS manual for possible values. Default is
+<b>NORMAL</b>.</p>
+
 
 <p style="margin-left:11%;"><b>&minus;BlacklistThreshold</b>
 <i>count</i></p>
@@ -382,9 +412,8 @@ is 10.</p>
 <i>seconds</i></p>
 
 <p style="margin-left:22%;">The number of seconds after
-which an idle VNC connection will be dropped (default is 0,
-which means that idle connections will never be
-dropped).</p>
+which an idle VNC connection will be dropped. Default is 0,
+which means that idle connections will never be dropped.</p>
 
 
 <p style="margin-left:11%;"><b>&minus;MaxDisconnectionTime</b>
@@ -409,17 +438,12 @@ seconds of user inactivity. Default is 0.</p>
 <p style="margin-left:11%;"><b>&minus;QueryConnect</b></p>
 
 <p style="margin-left:22%;">Prompts the user of the desktop
-to explicitly accept or reject incoming connections. This is
-most useful when using the vnc.so module or
-<b>x0vncserver</b>(1) program to access an existing X
-desktop via VNC.</p>
+to explicitly accept or reject incoming connections. Default
+is off.</p>
 
 <p style="margin-left:22%; margin-top: 1em">The
 <b>vncconfig</b>(1) program must be running on the desktop
-in order for QueryConnect to be supported by the
-<b>vnc.so</b>(1) module or <b>Xvnc</b>(1) program. The
-<b>x0vncserver</b>(1) program does not require
-<b>vncconfig</b>(1) to be running.</p>
+in order for QueryConnect to be supported.</p>
 
 
 <p style="margin-left:11%;"><b>&minus;QueryConnectTimeout</b>
@@ -456,49 +480,48 @@ mappings, each of the form <i>char</i>-&gt;<i>char</i>, or
 hexadecimal keysym. For example, to exchange the &quot; and
 @ symbols you would specify the following:</p>
 
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="26%"></td>
-<td width="31%">
 
-
-<p>RemapKeys=0x22&lt;&gt;0x40</p></td>
-<td width="43%">
-</td></tr>
-</table>
+<p style="margin-left:26%; margin-top: 1em">RemapKeys=0x22&lt;&gt;0x40</p>
 
 
 <p style="margin-left:11%;"><b>&minus;AvoidShiftNumLock</b></p>
 
-<p style="margin-left:26%;">Key affected by NumLock often
+<p style="margin-left:22%;">Key affected by NumLock often
 require a fake Shift to be inserted in order for the correct
 symbol to be generated. Turning on this option avoids these
 extra fake Shift events but may result in a slightly
 different symbol (e.g. a Return instead of a keypad
 Enter).</p>
 
+<p style="margin-left:11%;"><b>&minus;RawKeyboard</b></p>
+
+<p style="margin-left:22%;">Send keyboard events straight
+through and avoid mapping them to the current keyboard
+layout. This effectively makes the keyboard behave according
+to the layout configured on the server instead of the layout
+configured on the client. Default is off.</p>
+
 
 <p style="margin-left:11%;"><b>&minus;AllowOverride</b></p>
 
-<p style="margin-left:26%;">Comma separated list of
+<p style="margin-left:22%;">Comma separated list of
 parameters that can be modified using VNC extension.
 Parameters can be modified for example using
 <b>vncconfig</b>(1) program from inside a running
 session.</p>
 
-<p style="margin-left:26%; margin-top: 1em">Allowing
+<p style="margin-left:22%; margin-top: 1em">Allowing
 override of parameters such as <b>PAMService</b> or
 <b>PasswordFile</b> can negatively impact security if Xvnc
 runs under different user than the programs allowed to
 override the parameters.</p>
 
-<p style="margin-left:26%; margin-top: 1em">When
+<p style="margin-left:22%; margin-top: 1em">When
 <b>NoClipboard</b> parameter is set, allowing override of
 <b>SendCutText</b> and <b>AcceptCutText</b> has no
 effect.</p>
 
-<p style="margin-left:26%; margin-top: 1em">Default is
+<p style="margin-left:22%; margin-top: 1em">Default is
 <b>desktop,AcceptPointerEvents,SendCutText,AcceptCutText,SendPrimary,SetPrimary</b>.</p>
 
 <h2>USAGE WITH INETD

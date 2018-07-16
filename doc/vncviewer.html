@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Mon Sep 19 09:32:43 2016 -->
+<!-- CreationDate: Mon Jul 16 16:13:14 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -42,7 +42,9 @@
 vncviewer</b> [<i>options</i>] [<i>host</i>][::<i>port</i>]
 <b><br>
 vncviewer</b> [<i>options</i>] <b>&minus;listen</b>
-[<i>port</i>]</p>
+[<i>port</i>] <b><br>
+vncviewer</b> [<i>options</i>]
+[<i>.tigervnc</i>file<i>]</i></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -50,7 +52,7 @@ vncviewer</b> [<i>options</i>] <b>&minus;listen</b>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>vncviewer</b>
+<p style="margin-left:11%; margin-top: 1em"><i><b>vncviewer</b></i>
 is a viewer (client) for Virtual Network Computing. This
 manual page documents version 4 for the X window system.</p>
 
@@ -70,6 +72,21 @@ be omitted. So for example &quot;:1&quot; means display
 number 1 on the same machine, and &quot;snoopy&quot; means
 &quot;snoopy:0&quot; i.e. display 0 on machine
 &quot;snoopy&quot;.</p>
+
+<p style="margin-left:11%; margin-top: 1em">As another
+quick way to start a connection to a VNC server, specify a
+.tigervnc configuration file as an argument to the viewer,
+e.g.:</p>
+
+<p style="margin-left:22%; margin-top: 1em">vncviewer
+./some.tigervnc</p>
+
+<p style="margin-left:11%; margin-top: 1em">where
+&rsquo;./some.tigervnc&rsquo; is an existing and valid
+TigerVNC configuration file. The file name needs to include
+a path separator. Additional options may be given too, but
+the given configuration file will overwrite any conflicting
+parameters.</p>
 
 <p style="margin-left:11%; margin-top: 1em">If the VNC
 server is successfully contacted, you will be prompted for a
@@ -404,8 +421,8 @@ server sends an invisible cursor. Default is off.</p>
 <i>time</i></p>
 
 <p style="margin-left:22%;">Time in milliseconds to
-rate-limit successive pointer events. Default is to send
-events immediately.</p>
+rate-limit successive pointer events. Default is 17 ms (60
+Hz).</p>
 
 <p style="margin-left:11%;"><b>&minus;Log</b>
 <i>logname</i><b>:</b><i>dest</i><b>:</b><i>level</i></p>
@@ -424,8 +441,8 @@ Default is <b>*:stderr:30</b>.</p>
 <p style="margin-left:22%;">This option specifies the key
 which brings up the popup menu. The currently supported list
 is: F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12,
-Pause, Print, Scroll_Lock, Escape, Insert, Delete, Home,
-Page_Up, Page_Down). Default is F8.</p>
+Pause, Scroll_Lock, Escape, Insert, Delete, Home, Page_Up,
+Page_Down). Default is F8.</p>
 
 <p style="margin-left:11%;"><b>&minus;via</b>
 <i>gateway</i></p>
@@ -448,6 +465,12 @@ variables <i>L</i>, <i>H</i>, <i>R</i>, and <i>G</i> taken
 the values of the local port number, the remote host, the
 port number on the remote host, and the gateway machine
 respectively.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;AlertOnFatalError</b></p>
+
+<p style="margin-left:22%;">Display a dialog with any fatal
+error before exiting. Default is on.</p>
 
 <h2>FILES
 <a name="FILES"></a>
