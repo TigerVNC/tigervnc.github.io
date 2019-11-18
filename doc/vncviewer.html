@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Mon Jul 16 16:13:14 2018 -->
+<!-- CreationDate: Mon Nov 18 09:36:59 2019 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -41,10 +41,12 @@
 [<i>options</i>] [<i>host</i>][:<i>display#</i>] <b><br>
 vncviewer</b> [<i>options</i>] [<i>host</i>][::<i>port</i>]
 <b><br>
+vncviewer</b> [<i>options</i>] [<i>unix&nbsp;socket</i>]
+<b><br>
 vncviewer</b> [<i>options</i>] <b>&minus;listen</b>
 [<i>port</i>] <b><br>
 vncviewer</b> [<i>options</i>]
-[<i>.tigervnc</i>file<i>]</i></p>
+[<i>.tigervnc&nbsp;file</i>]</p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -52,7 +54,7 @@ vncviewer</b> [<i>options</i>]
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>vncviewer</b></i>
+<p style="margin-left:11%; margin-top: 1em"><b>vncviewer</b>
 is a viewer (client) for Virtual Network Computing. This
 manual page documents version 4 for the X window system.</p>
 
@@ -227,8 +229,14 @@ which the VNC viewer window should appear.</p>
 <p style="margin-left:11%;"><b>&minus;geometry</b>
 <i>geometry</i></p>
 
-<p style="margin-left:22%;">Standard X position and sizing
-specification.</p>
+<p style="margin-left:22%;">Initial position of the main
+VNC viewer window. The format is
+<i>width</i><b>x</b><i>height</i><b>+</b><i>xoffset</i><b>+</b><i>yoffset</i>
+, where &lsquo;+&rsquo; signs can be replaced with
+&lsquo;&minus;&rsquo; signs to specify offsets from the
+right and/or from the bottom of the screen. Offsets are
+optional and the window will be placed by the window manager
+by default.</p>
 
 <p style="margin-left:11%;"><b>&minus;listen</b>
 <i>[port]</i></p>
@@ -302,6 +310,13 @@ the server. Default is on.</p>
 
 <p style="margin-left:22%;">Set the primary selection as
 well as the clipboard selection. Default is on.</p>
+
+<p style="margin-left:11%;"><b>&minus;MaxCutText</b>
+<i>bytes</i></p>
+
+<p style="margin-left:22%;">The maximum size of a clipboard
+update that will be accepted from a server. Default is
+<b>262144</b>.</p>
 
 
 <p style="margin-left:11%;"><b>&minus;SendClipboard</b></p>
@@ -506,7 +521,7 @@ list.</p>
 <p style="margin-left:11%; margin-top: 1em"><b>Xvnc</b>(1),
 <b>vncpasswd</b>(1), <b>vncconfig</b>(1),
 <b>vncserver</b>(1) <br>
-http://www.tigervnc.org</p>
+https://www.tigervnc.org</p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>

@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Mon Jul 16 16:13:39 2018 -->
+<!-- CreationDate: Mon Nov 18 09:37:17 2019 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -203,23 +203,6 @@ until the viewer has finished sending or receiving a message
 - note that this does not mean an update will be aborted
 after this time. Default is 20000 (20 seconds).</p>
 
-<p style="margin-left:11%;"><b>&minus;httpd</b>
-<i>directory</i></p>
-
-<p style="margin-left:22%;">Run a mini-HTTP server which
-serves files from the given directory. Normally the
-directory will contain the classes for the Java viewer. In
-addition, files with a .vnc extension will have certain
-substitutions made so that a single installation of the Java
-VNC viewer can be served by separate instances of Xvnc.</p>
-
-<p style="margin-left:11%;"><b>&minus;httpPort</b>
-<i>port</i></p>
-
-<p style="margin-left:22%;">Specifies the port on which the
-mini-HTTP server runs. Default is 5800 plus the display
-number.</p>
-
 <p style="margin-left:11%;"><b>&minus;rfbauth</b>
 <i>passwd-file</i><b>, &minus;PasswordFile</b>
 <i>passwd-file</i></p>
@@ -391,6 +374,12 @@ format.</p>
 controls the TLS session&acirc;s handshake algorithms. See
 the GnuTLS manual for possible values. Default is
 <b>NORMAL</b>.</p>
+
+<p style="margin-left:11%;"><b>&minus;UseBlacklist</b></p>
+
+<p style="margin-left:22%;">Temporarily reject connections
+from a host if it repeatedly fails to authenticate. Default
+is on.</p>
 
 
 <p style="margin-left:11%;"><b>&minus;BlacklistThreshold</b>
@@ -599,7 +588,7 @@ created automatically the next time he connects.</p>
 <p style="margin-left:11%; margin-top: 1em"><b>vncconfig</b>(1),
 <b>vncpasswd</b>(1), <b>vncserver</b>(1),
 <b>vncviewer</b>(1), <b>Xserver</b>(1), <b>inetd</b>(1) <br>
-http://www.tigervnc.org</p>
+https://www.tigervnc.org</p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
