@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Mon Nov 18 09:37:17 2019 -->
+<!-- CreationDate: Tue Sep  8 14:29:11 2020 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -63,10 +63,10 @@ on machine &quot;snoopy&quot; in both the X world and the
 VNC world.</p>
 
 <p style="margin-left:11%; margin-top: 1em">The best way of
-starting <b>Xvnc</b> is via the <b>vncserver</b> script.
-This sets up the environment appropriately and runs some X
-applications to get you going. See the manual page for
-<b>vncserver</b>(1) for more information.</p>
+starting <b>Xvnc</b> is via <b>vncsession</b>. This sets up
+the environment appropriately and starts a desktop
+environment. See the manual page for <b>vncsession</b>(8)
+for more information.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -91,18 +91,16 @@ to be created. Default is 1024x768.</p>
 
 <p style="margin-left:22%;">Specify the pixel depth in bits
 of the desktop to be created. Default is 24, other possible
-values are 8, 15, and 16 - anything else is likely to cause
-strange behaviour by applications.</p>
+values are 16 and 32. Anything else is likely to cause
+strange behaviour by applications and may prevent the server
+from starting at all.</p>
 
 <p style="margin-left:11%;"><b>&minus;pixelformat</b>
 <i>format</i></p>
 
 <p style="margin-left:22%;">Specify pixel format for server
-to use (BGRnnn or RGBnnn). The default for depth 8 is BGR233
-(meaning the most significant two bits represent blue, the
-next three green, and the least significant three represent
-red), the default for depth 16 is RGB565 and for depth 24 is
-RGB888.</p>
+to use (BGRnnn or RGBnnn). The default for depth 16 is
+RGB565 and for depth 24 and 32 is RGB888.</p>
 
 <p style="margin-left:11%;"><b>&minus;interface</b> <i>IP
 address</i></p>
@@ -586,8 +584,9 @@ created automatically the next time he connects.</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>vncconfig</b>(1),
-<b>vncpasswd</b>(1), <b>vncserver</b>(1),
-<b>vncviewer</b>(1), <b>Xserver</b>(1), <b>inetd</b>(1) <br>
+<b>vncpasswd</b>(1), <b>vncviewer</b>(1),
+<b>vncsession</b>(8), <b>Xserver</b>(1), <b>inetd</b>(1)
+<br>
 https://www.tigervnc.org</p>
 
 <h2>AUTHOR

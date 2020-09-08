@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Mon Nov 18 09:36:59 2019 -->
+<!-- CreationDate: Tue Sep  8 14:28:50 2020 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -92,9 +92,10 @@ parameters.</p>
 
 <p style="margin-left:11%; margin-top: 1em">If the VNC
 server is successfully contacted, you will be prompted for a
-password to authenticate you. If the password is correct, a
-window will appear showing the desktop of the VNC
-server.</p>
+password to authenticate you. You can also add
+&rsquo;VNC_USERNAME&rsquo; and &rsquo;VNC_PASSWORD&rsquo; to
+environment variables. If the password is correct, a window
+will appear showing the desktop of the VNC server.</p>
 
 <h2>AUTOMATIC PROTOCOL SELECTION
 <a name="AUTOMATIC PROTOCOL SELECTION"></a>
@@ -417,7 +418,7 @@ is turned on. Default is 8.</p>
 <i>level</i></p>
 
 <p style="margin-left:22%;">Use specified lossless
-compression level. 0 = Low, 6 = High. Default is 2.</p>
+compression level. 0 = Low, 9 = High. Default is 2.</p>
 
 
 <p style="margin-left:11%;"><b>&minus;CustomCompressLevel</b></p>
@@ -438,6 +439,13 @@ server sends an invisible cursor. Default is off.</p>
 <p style="margin-left:22%;">Time in milliseconds to
 rate-limit successive pointer events. Default is 17 ms (60
 Hz).</p>
+
+
+<p style="margin-left:11%;"><b>&minus;EmulateMiddleButton</b></p>
+
+<p style="margin-left:22%;">Emulate middle mouse button by
+pressing left and right mouse buttons simultaneously.
+Default is off.</p>
 
 <p style="margin-left:11%;"><b>&minus;Log</b>
 <i>logname</i><b>:</b><i>dest</i><b>:</b><i>level</i></p>
@@ -520,7 +528,7 @@ list.</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>Xvnc</b>(1),
 <b>vncpasswd</b>(1), <b>vncconfig</b>(1),
-<b>vncserver</b>(1) <br>
+<b>vncsession</b>(8) <br>
 https://www.tigervnc.org</p>
 
 <h2>AUTHOR

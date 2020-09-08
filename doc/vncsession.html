@@ -1,0 +1,154 @@
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Tue Sep  8 14:28:36 2020 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>vncsession</title>
+
+</head>
+<body>
+
+<h1 align="center">vncsession</h1>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">vncsession
+&minus; start a VNC server</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>vncsession</b>
+&lt;<i>username</i>&gt; &lt;:<i>display#</i>&gt;</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>vncsession</b>
+is used to start a VNC (Virtual Network Computing) desktop.
+<b>vncsession</b> performs all the necessary steps to create
+a new user session, run Xvnc with appropriate options and
+starts a window manager on the VNC desktop.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>vncsession</b>
+is rarely called directly and is normally started by the
+system service manager.</p>
+
+<h2>FILES
+<a name="FILES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Several
+VNC-related files are found in the directory $HOME/.vnc:
+<br>
+/etc/tigervnc/vncserver-config-defaults</p>
+
+<p style="margin-left:22%;">The optional system-wide
+equivalent of $HOME/.vnc/config. If this file exists and
+defines options to be passed to Xvnc, they will be used as
+defaults for users. The user&rsquo;s $HOME/.vnc/config
+overrides settings configured in this file. The overall
+configuration file load order is: this file,
+$HOME/.vnc/config, and then
+/etc/tigervnc/vncserver-config-mandatory. None are required
+to exist.</p>
+
+
+<p style="margin-left:11%;">/etc/tigervnc/vncserver-config-mandatory</p>
+
+<p style="margin-left:22%;">The optional system-wide
+equivalent of $HOME/.vnc/config. If this file exists and
+defines options to be passed to Xvnc, they will override any
+of the same options defined in a user&rsquo;s
+$HOME/.vnc/config. This file offers a mechanism to establish
+some basic form of system-wide policy. WARNING! There is
+nothing stopping users from constructing their own
+vncsession-like script that calls Xvnc directly to bypass
+any options defined in
+/etc/tigervnc/vncserver-config-mandatory. The overall
+configuration file load order is:
+/etc/tigervnc/vncserver-config-defaults, $HOME/.vnc/config,
+and then this file. None are required to exist.</p>
+
+<p style="margin-left:11%;">$HOME/.vnc/config</p>
+
+<p style="margin-left:22%;">An optional server config file
+wherein options to be passed to Xvnc are listed to avoid
+hard-coding them to the physical invocation. List options in
+this file one per line. For those requiring an argument,
+simply separate the option from the argument with an equal
+sign, for example: &quot;geometry=2000x1200&quot; or
+&quot;securitytypes=vncauth,tlsvnc&quot;. Options without an
+argument are simply listed as a single word, for example:
+&quot;localhost&quot; or &quot;alwaysshared&quot;.</p>
+
+<p style="margin-left:22%; margin-top: 1em">The special
+option <b>session</b> can be used to control which session
+type will be started. This should match one of the files in
+<i>/usr/share/xsessions</i>. E.g. if there is a file called
+&quot;gnome.desktop&quot;, then &quot;session=gnome&quot;
+would be set to use that session type.</p>
+
+<p style="margin-left:11%;">$HOME/.vnc/passwd</p>
+
+<p style="margin-left:22%;">The VNC password file.</p>
+
+
+<p style="margin-left:11%;">$HOME/.vnc/<i>host</i>:<i>display#</i>.log</p>
+
+<p style="margin-left:22%;">The log file for Xvnc and the
+session.</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>vncviewer</b>(1),
+<b>vncpasswd</b>(1), <b>vncconfig</b>(1), <b>Xvnc</b>(1)
+<br>
+https://www.tigervnc.org</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Tristan
+Richardson, RealVNC Ltd., D. R. Commander and others.</p>
+
+<p style="margin-left:11%; margin-top: 1em">VNC was
+originally developed by the RealVNC team while at Olivetti
+Research Ltd / AT&amp;T Laboratories Cambridge. TightVNC
+additions were implemented by Constantin Kaplinsky. Many
+other people have since participated in development, testing
+and support. This manual is part of the TigerVNC software
+suite.</p>
+<hr>
+</body>
+</html>
