@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Tue Sep  8 14:29:01 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov  9 11:14:41 2021 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -107,7 +107,14 @@ arbitrary.</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>&minus;display</b>
+<p style="margin-left:11%; margin-top: 1em"><b>&minus;desktop</b>
+<i>desktop-name</i></p>
+
+<p style="margin-left:22%;">Each desktop has a name which
+may be displayed by the viewer. It defaults to
+&quot;&lt;user&gt;@&lt;hostname&gt;&quot;.</p>
+
+<p style="margin-left:11%;"><b>&minus;display</b>
 <i>display</i></p>
 
 <p style="margin-left:22%;">The X display name. If not
@@ -120,7 +127,8 @@ environment variable.</p>
 <p style="margin-left:22%;">Specifies the TCP port on which
 x0vncserver listens for connections from viewers (the
 protocol used in VNC is called RFB - &quot;remote
-framebuffer&quot;). The default port is 5900.</p>
+framebuffer&quot;). The default port is 5900. Listening on
+TCP port can be disabled with -fbport=-1.</p>
 
 <p style="margin-left:11%;"><b>&minus;UseIPv4</b></p>
 
@@ -137,7 +145,7 @@ outgoing connections. Default is on.</p>
 
 <p style="margin-left:22%;">Specifies the path of a Unix
 domain socket on which x0vncserver listens for connections
-from viewers, instead of listening on a TCP port.</p>
+from viewers.</p>
 
 <p style="margin-left:11%;"><b>&minus;rfbunixmode</b>
 <i>mode</i></p>
@@ -280,6 +288,12 @@ Default is <b>10</b>.</p>
 <p style="margin-left:22%;">Only allow connections from the
 same machine. Useful if you use SSH and want to stop non-SSH
 connections from any other hosts.</p>
+
+<p style="margin-left:11%;"><b>&minus;interface</b> <i>IP
+address</i></p>
+
+<p style="margin-left:22%;">Listen on interface. By default
+x0vncserver listens on all available interfaces.</p>
 
 <p style="margin-left:11%;"><b>&minus;AlwaysShared</b></p>
 
@@ -442,23 +456,6 @@ been connected for <i>N</i> seconds. Default is 0.</p>
 
 <p style="margin-left:22%;">Terminate after <i>N</i>
 seconds of user inactivity. Default is 0.</p>
-
-
-<p style="margin-left:11%;"><b>&minus;ClientWaitTimeMillis</b>
-<i>time</i></p>
-
-<p style="margin-left:22%;">Time in milliseconds to wait
-for a viewer which is blocking the server. This is necessary
-because the server is single-threaded and sometimes blocks
-until the viewer has finished sending or receiving a message
-- note that this does not mean an update will be aborted
-after this time. Default is 20000 (20 seconds).</p>
-
-<p style="margin-left:11%;"><b>&minus;AcceptCutText <br>
-&minus;SendCutText <br>
-&minus;MaxCutText</b></p>
-
-<p style="margin-left:22%;">Currently unused.</p>
 
 <h2>SEE ALSO
 <a name="SEE ALSO"></a>

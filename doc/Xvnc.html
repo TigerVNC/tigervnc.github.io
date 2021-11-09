@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Tue Sep  8 14:29:11 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov  9 11:14:13 2021 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -157,7 +157,7 @@ case-insensitive. <b><br>
 
 <p style="margin-left:22%;">Each desktop has a name which
 may be displayed by the viewer. It defaults to
-&quot;x11&quot;.</p>
+&quot;&lt;user&gt;@&lt;hostname&gt;&quot;.</p>
 
 <p style="margin-left:11%;"><b>&minus;rfbport</b>
 <i>port</i></p>
@@ -165,7 +165,8 @@ may be displayed by the viewer. It defaults to
 <p style="margin-left:22%;">Specifies the TCP port on which
 Xvnc listens for connections from viewers (the protocol used
 in VNC is called RFB - &quot;remote framebuffer&quot;). The
-default is 5900 plus the display number.</p>
+default is 5900 plus the display number. Listening on TCP
+port can be disabled with -fbport=-1.</p>
 
 <p style="margin-left:11%;"><b>&minus;UseIPv4</b></p>
 
@@ -182,24 +183,13 @@ outgoing connections. Default is on.</p>
 
 <p style="margin-left:22%;">Specifies the path of a Unix
 domain socket on which Xvnc listens for connections from
-viewers, instead of listening on a TCP port.</p>
+viewers.</p>
 
 <p style="margin-left:11%;"><b>&minus;rfbunixmode</b>
 <i>mode</i></p>
 
 <p style="margin-left:22%;">Specifies the mode of the Unix
 domain socket. The default is 0600.</p>
-
-<p style="margin-left:11%;"><b>&minus;rfbwait</b>
-<i>time</i><b>, &minus;ClientWaitTimeMillis</b>
-<i>time</i></p>
-
-<p style="margin-left:22%;">Time in milliseconds to wait
-for a viewer which is blocking the server. This is necessary
-because the server is single-threaded and sometimes blocks
-until the viewer has finished sending or receiving a message
-- note that this does not mean an update will be aborted
-after this time. Default is 20000 (20 seconds).</p>
 
 <p style="margin-left:11%;"><b>&minus;rfbauth</b>
 <i>passwd-file</i><b>, &minus;PasswordFile</b>
@@ -370,8 +360,10 @@ format.</p>
 
 <p style="margin-left:22%;">GnuTLS priority string that
 controls the TLS session&acirc;s handshake algorithms. See
-the GnuTLS manual for possible values. Default is
-<b>NORMAL</b>.</p>
+the GnuTLS manual for possible values. For GnuTLS &lt; 3.6.3
+the default value will be <b>NORMAL</b> to use upstream
+default. For newer versions of GnuTLS system-wide crypto
+policy will be used.</p>
 
 <p style="margin-left:11%;"><b>&minus;UseBlacklist</b></p>
 

@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Tue Sep  8 14:28:50 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov  9 11:15:00 2021 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -275,16 +275,15 @@ will usually be &quot;~/.vnc/passwd&quot;.</p>
 <p style="margin-left:22%;">Path to CA certificate to use
 when authenticating remote servers using any of the X509
 security schemes (X509None, X509Vnc, etc.). Must be in PEM
-format. Default is <b>$HOME/.vnc/x509_ca.pem</b>, if it
-exists.</p>
+format. Default is <b>$HOME/.vnc/x509_ca.pem</b>.</p>
 
 <p style="margin-left:11%;"><b>&minus;X509CRL</b>
 <i>path</i></p>
 
 <p style="margin-left:22%;">Path to certificate revocation
 list to use in conjunction with <b>-X509CA</b>. Must also be
-in PEM format. Default is <b>$HOME/.vnc/x509_crl.pem</b>, if
-it exists.</p>
+in PEM format. Default is
+<b>$HOME/.vnc/x509_crl.pem</b>.</p>
 
 <p style="margin-left:11%;"><b>&minus;Shared</b></p>
 
@@ -340,10 +339,33 @@ on.</p>
 <p style="margin-left:22%;">Start in full-screen mode.</p>
 
 
-<p style="margin-left:11%;"><b>&minus;FullScreenAllMonitors</b></p>
+<p style="margin-left:11%;"><b>&minus;FullScreenAllMonitors
+(DEPRECATED)</b></p>
 
 <p style="margin-left:22%;">Use all local monitors and not
-just the current one when switching to full-screen mode.</p>
+just the current one when switching to full-screen mode.
+Replaced by <b>-FullScreenMode=all</b></p>
+
+<p style="margin-left:11%;"><b>&minus;FullScreenMode</b>
+<i>mode</i></p>
+
+<p style="margin-left:22%;">Specify which monitors to use
+when in full screen. It should be either
+&quot;Current&quot;, &quot;Selected&quot; (specified by
+<b>-FullScreenSelectedMonitors</b>) or &quot;All&quot;. The
+default is &quot;Current&quot;.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;FullScreenSelectedMonitors</b>
+<i>monitors</i></p>
+
+<p style="margin-left:22%;">This option specifies the
+monitors to use with <b>-FullScreenMode=selected</b>.
+Monitors are ordered according to the system configuration
+from left to right, and in case of a conflict, from top to
+bottom. So, for example, &quot;1,2,3&quot; means that the
+first, second and third monitor counting from the left
+should be used. The default is &quot;1&quot;.</p>
 
 
 <p style="margin-left:11%;"><b>&minus;FullscreenSystemKeys</b></p>
@@ -494,6 +516,14 @@ respectively.</p>
 
 <p style="margin-left:22%;">Display a dialog with any fatal
 error before exiting. Default is on.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;ReconnectOnError</b></p>
+
+<p style="margin-left:22%;">Display a dialog with any error
+and offer the possibility to retry establishing the
+connection. In case this is off no dialog to re-connect will
+be offered. Default is on.</p>
 
 <h2>FILES
 <a name="FILES"></a>
