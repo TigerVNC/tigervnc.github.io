@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Tue Nov  9 11:14:41 2021 -->
+<!-- CreationDate: Fri Feb  3 09:34:40 2023 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -127,8 +127,8 @@ environment variable.</p>
 <p style="margin-left:22%;">Specifies the TCP port on which
 x0vncserver listens for connections from viewers (the
 protocol used in VNC is called RFB - &quot;remote
-framebuffer&quot;). The default port is 5900. Listening on
-TCP port can be disabled with -fbport=-1.</p>
+framebuffer&quot;). The default port is 5900. Specify
+<b>-1</b> to disable listening on a TCP port.</p>
 
 <p style="margin-left:11%;"><b>&minus;UseIPv4</b></p>
 
@@ -187,8 +187,9 @@ to accept connections from any IP address.</p>
 to use for incoming connections. Valid values are a comma
 separated list of <b>None</b>, <b>VncAuth</b>, <b>Plain</b>,
 <b>TLSNone</b>, <b>TLSVnc</b>, <b>TLSPlain</b>,
-<b>X509None</b>, <b>X509Vnc</b> and <b>X509Plain</b>.
-Default is <b>VncAuth,TLSVnc</b>.</p>
+<b>X509None</b>, <b>X509Vnc</b>, <b>X509Plain</b>,
+<b>RA2</b>, <b>RA2ne</b>, <b>RA2_256</b> and
+<b>RA2ne_256</b>. Default is <b>TLSVnc,VncAuth</b>.</p>
 
 <p style="margin-left:11%;"><b>&minus;rfbauth</b>
 <i>passwd-file</i><b>, &minus;PasswordFile</b>
@@ -246,6 +247,19 @@ format.</p>
 controls the TLS session&acirc;s handshake algorithms. See
 the GnuTLS manual for possible values. Default is
 <b>NORMAL</b>.</p>
+
+<p style="margin-left:11%;"><b>&minus;RSAKey</b>
+<i>path</i></p>
+
+<p style="margin-left:22%;">Path to the RSA key for the
+RSA-AES security types (<b>RA2</b>, <b>RA2ne</b>,
+<b>RA2_256</b> and <b>RA2ne_256</b>) in PEM format.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;RequireUsername</b></p>
+
+<p style="margin-left:22%;">Require username for the
+RSA-AES security types. Default is off.</p>
 
 <p style="margin-left:11%;"><b>&minus;UseBlacklist</b></p>
 
