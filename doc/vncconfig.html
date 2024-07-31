@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Tue Sep  8 14:27:52 2020 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Wed Jul 31 12:47:41 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -28,7 +28,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">vncconfig
+<p style="margin-left:9%; margin-top: 1em">vncconfig
 &minus; configure and control a VNC server</p>
 
 <h2>SYNOPSIS
@@ -37,10 +37,10 @@
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>vncconfig</b>
+<p style="margin-left:9%; margin-top: 1em"><b>vncconfig</b>
 [<i>parameters</i>] <b><br>
 vncconfig</b> [<i>parameters</i>] <b>&minus;connect</b>
-<i>host</i>[:<i>port</i>] <b><br>
+[<b>-view-only</b>] <i>host</i>[:<i>port</i>] <b><br>
 vncconfig</b> [<i>parameters</i>] <b>&minus;disconnect <br>
 vncconfig</b> [<i>parameters</i>] [<b>-set</b>]
 <i>Xvnc-param</i>=<i>value</i> ... <b><br>
@@ -56,29 +56,29 @@ vncconfig</b> [<i>parameters</i>] <b>&minus;desc</b>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>vncconfig</b></i>
+<p style="margin-left:9%; margin-top: 1em"><i><b>vncconfig</b></i>
 is used to configure and control a running instance of Xvnc,
 or any other X server with the VNC extension. Note that it
 cannot be used to control VNC servers prior to version
 4.</p>
 
-<p style="margin-left:11%; margin-top: 1em">When run with
-no options, it runs as a kind of &quot;helper&quot;
-application for Xvnc. Its main purpose when run in this mode
-is to query the user how new connections should be handled
-(provided this feature is enabled). The <b>-nowin</b> flag
-can be used if you always want the query support but
-don&rsquo;t wish to clutter the desktop with the settings
-window - alternatively the <b>-iconic</b> option can be used
-to make it iconified by default.</p>
+<p style="margin-left:9%; margin-top: 1em">When run with no
+options, it runs as a kind of &quot;helper&quot; application
+for Xvnc. Its main purpose when run in this mode is to query
+the user how new connections should be handled (provided
+this feature is enabled). The <b>-nowin</b> flag can be used
+if you always want the query support but don&rsquo;t wish to
+clutter the desktop with the settings window - alternatively
+the <b>-iconic</b> option can be used to make it iconified
+by default.</p>
 
-<p style="margin-left:11%; margin-top: 1em">When run in any
+<p style="margin-left:9%; margin-top: 1em">When run in any
 other mode, <b>vncconfig</b> is a one-shot program used to
 configure or control Xvnc as appropriate. It can be used to
 tell Xvnc to connect or disconnect from listening viewers,
 and to set and retrieve Xvnc&rsquo;s parameters.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Note that the
+<p style="margin-left:9%; margin-top: 1em">Note that the
 DISPLAY environment variable or the <b>&minus;display</b>
 option must be set as appropriate to control Xvnc. If you
 run it on an ordinary X server (or on a version 3 Xvnc) you
@@ -91,27 +91,29 @@ extension.</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>&minus;connect</b>
-<i>host</i><b>[:</b><i>port</i><b>]</b></p>
+<p style="margin-left:9%; margin-top: 1em"><b>&minus;connect</b>
+[<b>-view-only</b>] <i>host</i>[:<i>port</i>]</p>
 
-<p style="margin-left:22%;">Tells an Xvnc server to make a
+<p style="margin-left:18%;">Tells an Xvnc server to make a
 &quot;reverse&quot; connection to a listening VNC viewer
 (normally connections are made the other way round - the
 viewer connects to the server). <i>host</i> is the host
 where the listening viewer is running. If it&rsquo;s not
 listening on the default port of 5500, you can specify
-<i>host:port</i> instead.</p>
+<i>host:port</i> instead. The <b>-view-only</b> option
+specifies that the server must ignore all keyboard or mouse
+events sent by the client.</p>
 
-<p style="margin-left:11%;"><b>&minus;disconnect</b></p>
+<p style="margin-left:9%;"><b>&minus;disconnect</b></p>
 
-<p style="margin-left:22%;">This causes Xvnc to disconnect
+<p style="margin-left:18%;">This causes Xvnc to disconnect
 from all viewers so that the VNC desktop is not displayed
 anywhere.</p>
 
-<p style="margin-left:11%;">[<b>-set</b>]
+<p style="margin-left:9%;">[<b>-set</b>]
 <i>Xvnc-param</i>=<i>value</i></p>
 
-<p style="margin-left:22%;">Sets an Xvnc parameter to the
+<p style="margin-left:18%;">Sets an Xvnc parameter to the
 given value. Note that some of Xvnc&rsquo;s parameters are
 read only once at startup so that changing them in this way
 may not have any effect.</p>
@@ -119,30 +121,30 @@ may not have any effect.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="7%">
+<td width="9%"></td>
+<td width="6%">
 
 
 <p><b>&minus;list</b></p></td>
-<td width="4%"></td>
-<td width="66%">
+<td width="3%"></td>
+<td width="55%">
 
 
 <p>Lists all the parameters supported by Xvnc.</p></td>
-<td width="12%">
+<td width="27%">
 </td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>&minus;get</b>
+<p style="margin-left:9%;"><b>&minus;get</b>
 <i>Xvnc-param</i></p>
 
-<p style="margin-left:22%;">Prints the current value of the
+<p style="margin-left:18%;">Prints the current value of the
 given Xvnc parameter.</p>
 
-<p style="margin-left:11%;"><b>&minus;desc</b>
+<p style="margin-left:9%;"><b>&minus;desc</b>
 <i>Xvnc-param</i></p>
 
-<p style="margin-left:22%;">Prints a short description of
+<p style="margin-left:18%;">Prints a short description of
 the given Xvnc parameter.</p>
 
 <h2>PARAMETERS
@@ -151,13 +153,13 @@ the given Xvnc parameter.</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>vncconfig</b>
+<p style="margin-left:9%; margin-top: 1em"><b>vncconfig</b>
 also has parameters of its own which can be set on the
 command line. These should not be confused with Xvnc&rsquo;s
 parameters which are manipulated with the <b>-set</b>,
 <b>-get</b>, <b>-list</b> and <b>-desc</b> options.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Parameters can
+<p style="margin-left:9%; margin-top: 1em">Parameters can
 be turned on with -<i>param</i> or off with -<i>param</i>=0.
 Parameters which take a value can be specified as -<i>param
 value</i>. Other valid forms are
@@ -166,30 +168,30 @@ value</i>. Other valid forms are
 case-insensitive. <b><br>
 &minus;display</b> <i>Xdisplay</i></p>
 
-<p style="margin-left:22%;">Specifies the Xvnc server to
+<p style="margin-left:18%;">Specifies the Xvnc server to
 control.</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
+<td width="9%"></td>
+<td width="8%">
 
 
 <p><b>&minus;nowin</b></p></td>
-<td width="2%"></td>
-<td width="76%">
+<td width="1%"></td>
+<td width="64%">
 
 
 <p>When run as a &quot;helper&quot; app, don&rsquo;t put up
 a window.</p></td>
-<td width="2%">
+<td width="18%">
 </td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>&minus;iconic</b></p>
+<p style="margin-left:9%;"><b>&minus;iconic</b></p>
 
-<p style="margin-left:22%;">When run as a
+<p style="margin-left:18%;">When run as a
 &quot;helper&quot; app, make the window iconified at
 startup.</p>
 
@@ -199,7 +201,7 @@ startup.</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>vncpasswd</b>(1),
+<p style="margin-left:9%; margin-top: 1em"><b>vncpasswd</b>(1),
 <b>vncviewer</b>(1), <b>Xvnc</b>(1), <b>vncsession</b>(8)
 <br>
 https://www.tigervnc.org</p>
@@ -209,10 +211,10 @@ https://www.tigervnc.org</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">Tristan
+<p style="margin-left:9%; margin-top: 1em">Tristan
 Richardson, RealVNC Ltd. and others.</p>
 
-<p style="margin-left:11%; margin-top: 1em">VNC was
+<p style="margin-left:9%; margin-top: 1em">VNC was
 originally developed by the RealVNC team while at Olivetti
 Research Ltd / AT&amp;T Laboratories Cambridge. TightVNC
 additions were implemented by Constantin Kaplinsky. Many

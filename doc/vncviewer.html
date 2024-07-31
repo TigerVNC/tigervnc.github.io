@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Fri Feb  3 09:32:58 2023 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Wed Jul 31 12:48:04 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -28,7 +28,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">vncviewer
+<p style="margin-left:9%; margin-top: 1em">vncviewer
 &minus; VNC viewer for X</p>
 
 <h2>SYNOPSIS
@@ -37,7 +37,7 @@
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>vncviewer</b>
+<p style="margin-left:9%; margin-top: 1em"><b>vncviewer</b>
 [<i>options</i>] [<i>host</i>][:<i>display#</i>] <b><br>
 vncviewer</b> [<i>options</i>] [<i>host</i>][::<i>port</i>]
 <b><br>
@@ -54,19 +54,19 @@ vncviewer</b> [<i>options</i>]
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>vncviewer</b>
+<p style="margin-left:9%; margin-top: 1em"><b>vncviewer</b>
 is a viewer (client) for Virtual Network Computing. This
 manual page documents version 4 for the X window system.</p>
 
-<p style="margin-left:11%; margin-top: 1em">If you run the
+<p style="margin-left:9%; margin-top: 1em">If you run the
 viewer with no arguments it will prompt you for a VNC server
 to connect to. Alternatively, specify the VNC server as an
 argument, e.g.:</p>
 
-<p style="margin-left:22%; margin-top: 1em">vncviewer
+<p style="margin-left:18%; margin-top: 1em">vncviewer
 snoopy:2</p>
 
-<p style="margin-left:11%; margin-top: 1em">where
+<p style="margin-left:9%; margin-top: 1em">where
 &rsquo;snoopy&rsquo; is the name of the machine, and
 &rsquo;2&rsquo; is the display number of the VNC server on
 that machine. Either the machine name or display number can
@@ -75,22 +75,22 @@ number 1 on the same machine, and &quot;snoopy&quot; means
 &quot;snoopy:0&quot; i.e. display 0 on machine
 &quot;snoopy&quot;.</p>
 
-<p style="margin-left:11%; margin-top: 1em">As another
-quick way to start a connection to a VNC server, specify a
+<p style="margin-left:9%; margin-top: 1em">As another quick
+way to start a connection to a VNC server, specify a
 .tigervnc configuration file as an argument to the viewer,
 e.g.:</p>
 
-<p style="margin-left:22%; margin-top: 1em">vncviewer
+<p style="margin-left:18%; margin-top: 1em">vncviewer
 ./some.tigervnc</p>
 
-<p style="margin-left:11%; margin-top: 1em">where
+<p style="margin-left:9%; margin-top: 1em">where
 &rsquo;./some.tigervnc&rsquo; is an existing and valid
 TigerVNC configuration file. The file name needs to include
 a path separator. Additional options may be given too, but
 the given configuration file will overwrite any conflicting
 parameters.</p>
 
-<p style="margin-left:11%; margin-top: 1em">If the VNC
+<p style="margin-left:9%; margin-top: 1em">If the VNC
 server is successfully contacted, you will be prompted for a
 password to authenticate you. You can also add
 &rsquo;VNC_USERNAME&rsquo; and &rsquo;VNC_PASSWORD&rsquo; to
@@ -102,28 +102,27 @@ will appear showing the desktop of the VNC server.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The viewer
-tests the speed of the connection to the server and chooses
-the encoding and pixel format (color level) appropriately.
-This makes it much easier to use than previous versions
-where the user had to specify arcane command line
-arguments.</p>
+<p style="margin-left:9%; margin-top: 1em">The viewer tests
+the speed of the connection to the server and chooses the
+encoding and pixel format (color level) appropriately. This
+makes it much easier to use than previous versions where the
+user had to specify arcane command line arguments.</p>
 
-<p style="margin-left:11%; margin-top: 1em">The viewer
+<p style="margin-left:9%; margin-top: 1em">The viewer
 normally starts out assuming the link is slow, using the
 encoding with the best compression. If it turns out that the
 link is fast enough it switches to an encoding which
 compresses less but is faster to generate, thus improving
 the interactive feel.</p>
 
-<p style="margin-left:11%; margin-top: 1em">The viewer
+<p style="margin-left:9%; margin-top: 1em">The viewer
 normally starts in full-color mode, but switches to
 low-color mode if the bandwidth is insufficient. However,
 this only occurs when communicating with servers supporting
 protocol 3.8 or newer, since many old servers does not
 support color mode changes safely.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Automatic
+<p style="margin-left:9%; margin-top: 1em">Automatic
 selection can be turned off by setting the <b>AutoSelect</b>
 parameter to false, or from the options dialog.</p>
 
@@ -132,62 +131,70 @@ parameter to false, or from the options dialog.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The viewer has
-a popup menu containing entries which perform various
-actions. It is usually brought up by pressing F8, but this
-can be configured with the MenuKey parameter. Actions which
-the popup menu can perform include:</p>
+<p style="margin-left:9%; margin-top: 1em">The viewer has a
+popup menu containing entries which perform various actions.
+It is usually brought up by pressing F8, but this can be
+configured with the MenuKey parameter. Actions which the
+popup menu can perform include:</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="14%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>*</p></td>
-<td width="2%"></td>
-<td width="83%">
+<td width="1%"></td>
+<td width="69%">
 
 
-<p>switching in and out of full-screen mode</p></td></tr>
+<p>switching in and out of full-screen mode</p></td>
+<td width="17%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="14%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>*</p></td>
-<td width="2%"></td>
-<td width="83%">
+<td width="1%"></td>
+<td width="69%">
 
 
-<p>quitting the viewer</p></td></tr>
+<p>quitting the viewer</p></td>
+<td width="17%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="14%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>*</p></td>
-<td width="2%"></td>
-<td width="83%">
+<td width="1%"></td>
+<td width="69%">
 
 
-<p>generating key events, e.g. sending ctrl-alt-del</p></td></tr>
+<p>generating key events, e.g. sending ctrl-alt-del</p></td>
+<td width="17%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="14%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>*</p></td>
-<td width="2%"></td>
-<td width="83%">
+<td width="1%"></td>
+<td width="69%">
 
 
 <p>accessing the options dialog and various other
-dialogs</p> </td></tr>
+dialogs</p> </td>
+<td width="17%">
+</td></tr>
 </table>
 
-<p style="margin-left:11%; margin-top: 1em">By default, key
+<p style="margin-left:9%; margin-top: 1em">By default, key
 presses in the popup menu get sent to the VNC server and
 dismiss the popup. So to get an F8 through to the VNC server
 simply press it twice.</p>
@@ -197,7 +204,7 @@ simply press it twice.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">A full-screen
+<p style="margin-left:9%; margin-top: 1em">A full-screen
 mode is supported. This is particularly useful when
 connecting to a remote screen which is the same size as your
 local one. If the remote screen is bigger, you can scroll by
@@ -208,7 +215,7 @@ bumping the mouse against the edge of the screen.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">You can get a
+<p style="margin-left:9%; margin-top: 1em">You can get a
 list of parameters by giving <b>&minus;h</b> as a
 command-line option to vncviewer. Parameters can be turned
 on with -<i>param</i> or off with -<i>param</i>=0.
@@ -218,19 +225,19 @@ value</i>. Other valid forms are
 --<i>param</i>=<i>value</i>. Parameter names are
 case-insensitive.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Many of the
+<p style="margin-left:9%; margin-top: 1em">Many of the
 parameters can also be set graphically via the options
 dialog box. This can be accessed from the popup menu or from
 the &quot;Connection details&quot; dialog box. <b><br>
 &minus;display</b> <i>Xdisplay</i></p>
 
-<p style="margin-left:22%;">Specifies the X display on
+<p style="margin-left:18%;">Specifies the X display on
 which the VNC viewer window should appear.</p>
 
-<p style="margin-left:11%;"><b>&minus;geometry</b>
+<p style="margin-left:9%;"><b>&minus;geometry</b>
 <i>geometry</i></p>
 
-<p style="margin-left:22%;">Initial position of the main
+<p style="margin-left:18%;">Initial position of the main
 VNC viewer window. The format is
 <i>width</i><b>x</b><i>height</i><b>+</b><i>xoffset</i><b>+</b><i>yoffset</i>
 , where &lsquo;+&rsquo; signs can be replaced with
@@ -239,10 +246,10 @@ right and/or from the bottom of the screen. Offsets are
 optional and the window will be placed by the window manager
 by default.</p>
 
-<p style="margin-left:11%;"><b>&minus;listen</b>
+<p style="margin-left:9%;"><b>&minus;listen</b>
 <i>[port]</i></p>
 
-<p style="margin-left:22%;">Causes vncviewer to listen on
+<p style="margin-left:18%;">Causes vncviewer to listen on
 the given port (default 5500) for reverse connections from a
 VNC server. WinVNC supports reverse connections initiated
 using the &rsquo;Add New Client&rsquo; menu option or the
@@ -250,10 +257,10 @@ using the &rsquo;Add New Client&rsquo; menu option or the
 supports reverse connections with a helper program called
 <b>vncconfig.</b></p>
 
-<p style="margin-left:11%;"><b>&minus;SecurityTypes</b>
+<p style="margin-left:9%;"><b>&minus;SecurityTypes</b>
 <i>sec-types</i></p>
 
-<p style="margin-left:22%;">Specify which security schemes
+<p style="margin-left:18%;">Specify which security schemes
 to attempt to use when authenticating with the server. Valid
 values are a comma separated list of <b>None</b>,
 <b>VncAuth</b>, <b>Plain</b>, <b>TLSNone</b>, <b>TLSVnc</b>,
@@ -262,105 +269,108 @@ values are a comma separated list of <b>None</b>,
 and <b>RA2ne_256</b>. Default is to attempt every supported
 scheme.</p>
 
-<p style="margin-left:11%;"><b>&minus;passwd,
+<p style="margin-left:9%;"><b>&minus;passwd,
 &minus;PasswordFile</b> <i>password-file</i></p>
 
-<p style="margin-left:22%;">If you are on a filesystem
+<p style="margin-left:18%;">If you are on a filesystem
 which gives you access to the password file used by the
 server, you can specify it here to avoid typing it in. It
-will usually be &quot;~/.vnc/passwd&quot;.</p>
+will usually be <i>$XDG_CONFIG_HOME/tigervnc/passwd</i>, or
+<i>&#732;/.config/tigervnc/passwd</i> if the former is
+unset.</p>
 
-<p style="margin-left:11%;"><b>&minus;X509CA</b>
+<p style="margin-left:9%;"><b>&minus;X509CA</b>
 <i>path</i></p>
 
-<p style="margin-left:22%;">Path to CA certificate to use
+<p style="margin-left:18%;">Path to CA certificate to use
 when authenticating remote servers using any of the X509
 security schemes (X509None, X509Vnc, etc.). Must be in PEM
-format. Default is <b>$HOME/.vnc/x509_ca.pem</b>.</p>
+format. Default is
+<i>$XDG_CONFIG_HOME/tigervnc/x509_ca.pem</i>, or
+<i>&#732;/.config/tigervnc/x509_ca.pem</i>.</p>
 
-<p style="margin-left:11%;"><b>&minus;X509CRL</b>
+<p style="margin-left:9%;"><b>&minus;X509CRL</b>
 <i>path</i></p>
 
-<p style="margin-left:22%;">Path to certificate revocation
+<p style="margin-left:18%;">Path to certificate revocation
 list to use in conjunction with <b>-X509CA</b>. Must also be
 in PEM format. Default is
-<b>$HOME/.vnc/x509_crl.pem</b>.</p>
+<i>$XDG_CONFIG_HOME/tigervnc/x509_crl.pem</i>, or
+<i>&#732;/.config/tigervnc/x509_crl.pem</i>.</p>
 
-<p style="margin-left:11%;"><b>&minus;Shared</b></p>
+<p style="margin-left:9%;"><b>&minus;Shared</b></p>
 
-<p style="margin-left:22%;">When you make a connection to a
+<p style="margin-left:18%;">When you make a connection to a
 VNC server, all other existing connections are normally
 closed. This option requests that they be left open,
 allowing you to share the desktop with someone already using
 it.</p>
 
-<p style="margin-left:11%;"><b>&minus;ViewOnly</b></p>
+<p style="margin-left:9%;"><b>&minus;ViewOnly</b></p>
 
-<p style="margin-left:22%;">Specifies that no keyboard or
+<p style="margin-left:18%;">Specifies that no keyboard or
 mouse events should be sent to the server. Useful if you
 want to view a desktop without interfering; often needs to
 be combined with <b>&minus;Shared.</b></p>
 
 
-<p style="margin-left:11%;"><b>&minus;AcceptClipboard</b></p>
+<p style="margin-left:9%;"><b>&minus;AcceptClipboard</b></p>
 
-<p style="margin-left:22%;">Accept clipboard changes from
+<p style="margin-left:18%;">Accept clipboard changes from
 the server. Default is on.</p>
 
-<p style="margin-left:11%;"><b>&minus;SetPrimary</b></p>
+<p style="margin-left:9%;"><b>&minus;SetPrimary</b></p>
 
-<p style="margin-left:22%;">Set the primary selection as
+<p style="margin-left:18%;">Set the primary selection as
 well as the clipboard selection. Default is on.</p>
 
-<p style="margin-left:11%;"><b>&minus;MaxCutText</b>
+<p style="margin-left:9%;"><b>&minus;MaxCutText</b>
 <i>bytes</i></p>
 
-<p style="margin-left:22%;">The maximum size of a clipboard
+<p style="margin-left:18%;">The maximum size of a clipboard
 update that will be accepted from a server. Default is
 <b>262144</b>.</p>
 
+<p style="margin-left:9%;"><b>&minus;SendClipboard</b></p>
 
-<p style="margin-left:11%;"><b>&minus;SendClipboard</b></p>
-
-<p style="margin-left:22%;">Send clipboard changes to the
+<p style="margin-left:18%;">Send clipboard changes to the
 server. Default is on.</p>
 
-<p style="margin-left:11%;"><b>&minus;SendPrimary</b></p>
+<p style="margin-left:9%;"><b>&minus;SendPrimary</b></p>
 
-<p style="margin-left:22%;">Send the primary selection to
+<p style="margin-left:18%;">Send the primary selection to
 the server as well as the clipboard selection. Default is
 on.</p>
 
-<p style="margin-left:11%;"><b>&minus;Maximize</b></p>
+<p style="margin-left:9%;"><b>&minus;Maximize</b></p>
 
-<p style="margin-left:22%;">Maximize viewer window.</p>
+<p style="margin-left:18%;">Maximize viewer window.</p>
 
-<p style="margin-left:11%;"><b>&minus;FullScreen</b></p>
+<p style="margin-left:9%;"><b>&minus;FullScreen</b></p>
 
-<p style="margin-left:22%;">Start in full-screen mode.</p>
+<p style="margin-left:18%;">Start in full-screen mode.</p>
 
-
-<p style="margin-left:11%;"><b>&minus;FullScreenAllMonitors
+<p style="margin-left:9%;"><b>&minus;FullScreenAllMonitors
 (DEPRECATED)</b></p>
 
-<p style="margin-left:22%;">Use all local monitors and not
+<p style="margin-left:18%;">Use all local monitors and not
 just the current one when switching to full-screen mode.
 Replaced by <b>-FullScreenMode=all</b></p>
 
-<p style="margin-left:11%;"><b>&minus;FullScreenMode</b>
+<p style="margin-left:9%;"><b>&minus;FullScreenMode</b>
 <i>mode</i></p>
 
-<p style="margin-left:22%;">Specify which monitors to use
+<p style="margin-left:18%;">Specify which monitors to use
 when in full screen. It should be either
 &quot;Current&quot;, &quot;Selected&quot; (specified by
 <b>-FullScreenSelectedMonitors</b>) or &quot;All&quot;. The
 default is &quot;Current&quot;.</p>
 
 
-<p style="margin-left:11%;"><b>&minus;FullScreenSelectedMonitors</b>
+<p style="margin-left:9%;"><b>&minus;FullScreenSelectedMonitors</b>
 <i>monitors</i></p>
 
-<p style="margin-left:22%;">This option specifies the
+<p style="margin-left:18%;">This option specifies the
 monitors to use with <b>-FullScreenMode=selected</b>.
 Monitors are ordered according to the system configuration
 from left to right, and in case of a conflict, from top to
@@ -369,46 +379,46 @@ first, second and third monitor counting from the left
 should be used. The default is &quot;1&quot;.</p>
 
 
-<p style="margin-left:11%;"><b>&minus;FullscreenSystemKeys</b></p>
+<p style="margin-left:9%;"><b>&minus;FullscreenSystemKeys</b></p>
 
-<p style="margin-left:22%;">Pass special keys (like
+<p style="margin-left:18%;">Pass special keys (like
 Alt+Tab) directly to the server when in full-screen
 mode.</p>
 
-<p style="margin-left:11%;"><b>&minus;DesktopSize</b>
+<p style="margin-left:9%;"><b>&minus;DesktopSize</b>
 <i>width</i><b>x</b><i>height</i></p>
 
-<p style="margin-left:22%;">Instead of keeping the existing
+<p style="margin-left:18%;">Instead of keeping the existing
 remote screen size, the client will attempt to switch to the
 specified since when connecting. If the server does not
 support the SetDesktopSize message then the screen will
 retain the original size.</p>
 
-<p style="margin-left:11%;"><b>&minus;RemoteResize</b></p>
+<p style="margin-left:9%;"><b>&minus;RemoteResize</b></p>
 
-<p style="margin-left:22%;">Dynamically resize the remote
+<p style="margin-left:18%;">Dynamically resize the remote
 desktop size as the size of the local client window changes.
 Note that this may not work with all VNC servers.</p>
 
-<p style="margin-left:11%;"><b>&minus;AutoSelect</b></p>
+<p style="margin-left:9%;"><b>&minus;AutoSelect</b></p>
 
-<p style="margin-left:22%;">Use automatic selection of
+<p style="margin-left:18%;">Use automatic selection of
 encoding and pixel format (default is on). Normally the
 viewer tests the speed of the connection to the server and
 chooses the encoding and pixel format appropriately. Turn it
 off with <b>-AutoSelect=0</b>.</p>
 
-<p style="margin-left:11%;"><b>&minus;FullColor,
+<p style="margin-left:9%;"><b>&minus;FullColor,
 &minus;FullColour</b></p>
 
-<p style="margin-left:22%;">Tells the VNC server to send
+<p style="margin-left:18%;">Tells the VNC server to send
 full-color pixels in the best format for this display. This
 is default.</p>
 
-<p style="margin-left:11%;"><b>&minus;LowColorLevel,
+<p style="margin-left:9%;"><b>&minus;LowColorLevel,
 &minus;LowColourLevel</b> <i>level</i></p>
 
-<p style="margin-left:22%;">Selects the reduced color level
+<p style="margin-left:18%;">Selects the reduced color level
 to use on slow links. <i>level</i> can range from 0 to 2, 0
 meaning 8 colors, 1 meaning 64 colors (the default), 2
 meaning 256 colors. Note that decision if reduced color
@@ -416,64 +426,63 @@ level is used is made by vncviewer. If you would like to
 force vncviewer to use reduced color level use
 <b>-AutoSelect=0</b> parameter.</p>
 
-
-<p style="margin-left:11%;"><b>&minus;PreferredEncoding</b>
+<p style="margin-left:9%;"><b>&minus;PreferredEncoding</b>
 <i>encoding</i></p>
 
-<p style="margin-left:22%;">This option specifies the
+<p style="margin-left:18%;">This option specifies the
 preferred encoding to use from one of &quot;Tight&quot;,
 &quot;ZRLE&quot;, &quot;hextile&quot; or
 &quot;raw&quot;.</p>
 
-<p style="margin-left:11%;"><b>&minus;NoJpeg</b></p>
+<p style="margin-left:9%;"><b>&minus;NoJpeg</b></p>
 
-<p style="margin-left:22%;">Disable lossy JPEG compression
+<p style="margin-left:18%;">Disable lossy JPEG compression
 in Tight encoding. Default is off.</p>
 
-<p style="margin-left:11%;"><b>&minus;QualityLevel</b>
+<p style="margin-left:9%;"><b>&minus;QualityLevel</b>
 <i>level</i></p>
 
-<p style="margin-left:22%;">JPEG quality level. 0 = Low, 9
+<p style="margin-left:18%;">JPEG quality level. 0 = Low, 9
 = High. May be adjusted automatically if <b>-AutoSelect</b>
 is turned on. Default is 8.</p>
 
-<p style="margin-left:11%;"><b>&minus;CompressLevel</b>
+<p style="margin-left:9%;"><b>&minus;CompressLevel</b>
 <i>level</i></p>
 
-<p style="margin-left:22%;">Use specified lossless
+<p style="margin-left:18%;">Use specified lossless
 compression level. 0 = Low, 9 = High. Default is 2.</p>
 
 
-<p style="margin-left:11%;"><b>&minus;CustomCompressLevel</b></p>
+<p style="margin-left:9%;"><b>&minus;CustomCompressLevel</b></p>
 
-<p style="margin-left:22%;">Use custom compression level.
+<p style="margin-left:18%;">Use custom compression level.
 Default if <b>CompressLevel</b> is specified.</p>
 
 
-<p style="margin-left:11%;"><b>&minus;DotWhenNoCursor</b></p>
+<p style="margin-left:9%;"><b>&minus;DotWhenNoCursor</b></p>
 
-<p style="margin-left:22%;">Show the dot cursor when the
+<p style="margin-left:18%;">Show the dot cursor when the
 server sends an invisible cursor. Default is off.</p>
 
 
-<p style="margin-left:11%;"><b>&minus;PointerEventInterval</b>
+<p style="margin-left:9%;"><b>&minus;PointerEventInterval</b>
 <i>time</i></p>
 
-<p style="margin-left:22%;">Time in milliseconds to
+<p style="margin-left:18%;">Time in milliseconds to
 rate-limit successive pointer events. Default is 17 ms (60
 Hz).</p>
 
 
-<p style="margin-left:11%;"><b>&minus;EmulateMiddleButton</b></p>
+<p style="margin-left:9%;"><b>&minus;EmulateMiddleButton</b></p>
 
-<p style="margin-left:22%;">Emulate middle mouse button by
+<p style="margin-left:18%;">Emulate middle mouse button by
 pressing left and right mouse buttons simultaneously.
 Default is off.</p>
 
-<p style="margin-left:11%;"><b>&minus;Log</b>
+<p style="margin-left:9%;"><b>&minus;Log</b>
 <i>logname</i><b>:</b><i>dest</i><b>:</b><i>level</i></p>
 
-<p style="margin-left:22%;">Configures the debug log
+<p style="margin-left:18%;">Configures the debug log
 settings. <i>dest</i> can currently be <b>stderr</b> or
 <b>stdout</b>, and <i>level</i> is between 0 and 100, 100
 meaning most verbose output. <i>logname</i> is usually
@@ -481,19 +490,19 @@ meaning most verbose output. <i>logname</i> is usually
 file if you know the name of its &quot;LogWriter&quot;.
 Default is <b>*:stderr:30</b>.</p>
 
-<p style="margin-left:11%;"><b>&minus;MenuKey</b>
+<p style="margin-left:9%;"><b>&minus;MenuKey</b>
 <i>keysym-name</i></p>
 
-<p style="margin-left:22%;">This option specifies the key
+<p style="margin-left:18%;">This option specifies the key
 which brings up the popup menu. The currently supported list
 is: F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12,
 Pause, Scroll_Lock, Escape, Insert, Delete, Home, Page_Up,
 Page_Down). Default is F8.</p>
 
-<p style="margin-left:11%;"><b>&minus;via</b>
+<p style="margin-left:9%;"><b>&minus;via</b>
 <i>gateway</i></p>
 
-<p style="margin-left:22%;">Automatically create encrypted
+<p style="margin-left:18%;">Automatically create encrypted
 TCP tunnel to the <i>gateway</i> machine before connection,
 connect to the <i>host</i> through that tunnel
 (TigerVNC&minus;specific). By default, this option invokes
@@ -513,15 +522,15 @@ port number on the remote host, and the gateway machine
 respectively.</p>
 
 
-<p style="margin-left:11%;"><b>&minus;AlertOnFatalError</b></p>
+<p style="margin-left:9%;"><b>&minus;AlertOnFatalError</b></p>
 
-<p style="margin-left:22%;">Display a dialog with any fatal
+<p style="margin-left:18%;">Display a dialog with any fatal
 error before exiting. Default is on.</p>
 
 
-<p style="margin-left:11%;"><b>&minus;ReconnectOnError</b></p>
+<p style="margin-left:9%;"><b>&minus;ReconnectOnError</b></p>
 
-<p style="margin-left:22%;">Display a dialog with any error
+<p style="margin-left:18%;">Display a dialog with any error
 and offer the possibility to retry establishing the
 connection. In case this is off no dialog to re-connect will
 be offered. Default is on.</p>
@@ -532,32 +541,55 @@ be offered. Default is on.</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em">$HOME/.vnc/default.tigervnc</p>
+<p style="margin-left:9%; margin-top: 1em"><i>$XDG_CONFIG_HOME/tigervnc/default.tigervnc
+<br>
+$HOME/.config/tigervnc/default.tigervnc</i></p>
 
-<p style="margin-left:22%;">Default configuration options.
+<p style="margin-left:18%;">Default configuration options.
 This file must have a &quot;magic&quot; first line of
 &quot;TigerVNC Configuration file Version 1.0&quot; (without
 quotes), followed by simple &lt;setting&gt;=&lt;value&gt;
 pairs of your choosing. The available settings are those
 shown in this man page.</p>
 
-<p style="margin-left:11%;">$HOME/.vnc/x509_ca.pem</p>
 
-<p style="margin-left:22%;">Default CA certificate for
+<p style="margin-left:9%;"><i>$XDG_CONFIG_HOME/tigervnc/x509_ca.pem
+<br>
+$HOME/.config/tigervnc/x509_ca.pem</i></p>
+
+<p style="margin-left:18%;">Default CA certificate for
 authenticating servers.</p>
 
-<p style="margin-left:11%;">$HOME/.vnc/x509_crl.pem</p>
 
-<p style="margin-left:22%;">Default certificate revocation
+<p style="margin-left:9%;"><i>$XDG_CONFIG_HOME/tigervnc/x509_crl.pem
+<br>
+$HOME/.config/tigervnc/x509_crl.pem</i></p>
+
+<p style="margin-left:18%;">Default certificate revocation
 list.</p>
+
+
+<p style="margin-left:9%;"><i>$XDG_DATA_HOME/tigervnc/x509_known_hosts
+<br>
+$HOME/.local/share/tigervnc/x509_known_hosts</i></p>
+
+<p style="margin-left:18%;">Known hosts database for
+certificate-based authentication.</p>
+
+
+<p style="margin-left:9%;"><i>$XDG_STATE_HOME/tigervnc/tigervnc.history
+<br>
+$HOME/.local/state/tigervnc/tigervnc.history</i></p>
+
+<p style="margin-left:18%;">History file for hostnames that
+have been recently connected to.</p>
 
 <h2>SEE ALSO
 <a name="SEE ALSO"></a>
 </h2>
 
 
-
-<p style="margin-left:11%; margin-top: 1em"><b>Xvnc</b>(1),
+<p style="margin-left:9%; margin-top: 1em"><b>Xvnc</b>(1),
 <b>vncpasswd</b>(1), <b>vncconfig</b>(1),
 <b>vncsession</b>(8) <br>
 https://www.tigervnc.org</p>
@@ -567,10 +599,10 @@ https://www.tigervnc.org</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">Tristan
+<p style="margin-left:9%; margin-top: 1em">Tristan
 Richardson, RealVNC Ltd. and others.</p>
 
-<p style="margin-left:11%; margin-top: 1em">VNC was
+<p style="margin-left:9%; margin-top: 1em">VNC was
 originally developed by the RealVNC team while at Olivetti
 Research Ltd / AT&amp;T Laboratories Cambridge. TightVNC
 additions were implemented by Constantin Kaplinsky. Many
