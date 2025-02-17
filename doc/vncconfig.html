@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.23.0 -->
-<!-- CreationDate: Wed Jul 31 12:47:41 2024 -->
+<!-- CreationDate: Mon Feb 17 10:38:36 2025 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -104,19 +104,23 @@ listening on the default port of 5500, you can specify
 specifies that the server must ignore all keyboard or mouse
 events sent by the client.</p>
 
+<p style="margin-left:9%;"><b>&minus;desc</b>
+<i>Xvnc-param</i></p>
+
+<p style="margin-left:18%;">Prints a short description of
+the given Xvnc parameter.</p>
+
 <p style="margin-left:9%;"><b>&minus;disconnect</b></p>
 
 <p style="margin-left:18%;">This causes Xvnc to disconnect
 from all viewers so that the VNC desktop is not displayed
 anywhere.</p>
 
-<p style="margin-left:9%;">[<b>-set</b>]
-<i>Xvnc-param</i>=<i>value</i></p>
+<p style="margin-left:9%;"><b>&minus;get</b>
+<i>Xvnc-param</i></p>
 
-<p style="margin-left:18%;">Sets an Xvnc parameter to the
-given value. Note that some of Xvnc&rsquo;s parameters are
-read only once at startup so that changing them in this way
-may not have any effect.</p>
+<p style="margin-left:18%;">Prints the current value of the
+given Xvnc parameter.</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -135,17 +139,13 @@ may not have any effect.</p>
 </td></tr>
 </table>
 
-<p style="margin-left:9%;"><b>&minus;get</b>
-<i>Xvnc-param</i></p>
+<p style="margin-left:9%;">[<b>-set</b>]
+<i>Xvnc-param</i>=<i>value</i></p>
 
-<p style="margin-left:18%;">Prints the current value of the
-given Xvnc parameter.</p>
-
-<p style="margin-left:9%;"><b>&minus;desc</b>
-<i>Xvnc-param</i></p>
-
-<p style="margin-left:18%;">Prints a short description of
-the given Xvnc parameter.</p>
+<p style="margin-left:18%;">Sets an Xvnc parameter to the
+given value. Note that some of Xvnc&rsquo;s parameters are
+read only once at startup so that changing them in this way
+may not have any effect.</p>
 
 <h2>PARAMETERS
 <a name="PARAMETERS"></a>
@@ -171,6 +171,12 @@ case-insensitive. <b><br>
 <p style="margin-left:18%;">Specifies the Xvnc server to
 control.</p>
 
+<p style="margin-left:9%;"><b>&minus;iconic</b></p>
+
+<p style="margin-left:18%;">When run as a
+&quot;helper&quot; app, make the window iconified at
+startup.</p>
+
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
@@ -188,12 +194,6 @@ a window.</p></td>
 <td width="18%">
 </td></tr>
 </table>
-
-<p style="margin-left:9%;"><b>&minus;iconic</b></p>
-
-<p style="margin-left:18%;">When run as a
-&quot;helper&quot; app, make the window iconified at
-startup.</p>
 
 <h2>SEE ALSO
 <a name="SEE ALSO"></a>

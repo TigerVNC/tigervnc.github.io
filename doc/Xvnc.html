@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.23.0 -->
-<!-- CreationDate: Wed Jul 31 12:46:58 2024 -->
+<!-- CreationDate: Mon Feb 17 10:38:36 2025 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -81,19 +81,47 @@ to options which can only be set via the command-line, there
 are also &quot;parameters&quot; which can be set both via
 the command-line and through the <b>vncconfig</b>(1)
 program. <b><br>
-&minus;geometry</b> <i>width</i><b>x</b><i>height</i></p>
-
-<p style="margin-left:18%;">Specify the size of the desktop
-to be created. Default is 1024x768.</p>
-
-<p style="margin-left:9%;"><b>&minus;depth</b>
-<i>depth</i></p>
+&minus;depth</b> <i>depth</i></p>
 
 <p style="margin-left:18%;">Specify the pixel depth in bits
 of the desktop to be created. Default is 24, other possible
 values are 16 and 32. Anything else is likely to cause
 strange behaviour by applications and may prevent the server
 from starting at all.</p>
+
+<p style="margin-left:9%;"><b>&minus;geometry</b>
+<i>width</i><b>x</b><i>height</i></p>
+
+<p style="margin-left:18%;">Specify the size of the desktop
+to be created. Default is 1024x768.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="8%">
+
+
+<p><b>&minus;help</b></p></td>
+<td width="1%"></td>
+<td width="82%">
+
+
+<p>List all the options and parameters</p></td></tr>
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="8%">
+
+
+<p><b>&minus;inetd</b></p></td>
+<td width="1%"></td>
+<td width="82%">
+
+
+<p>This significantly changes Xvnc&rsquo;s behaviour so
+that it can be launched from inetd. See the section below on
+usage with inetd.</p></td></tr>
+</table>
 
 <p style="margin-left:9%;"><b>&minus;pixelformat</b>
 <i>format</i></p>
@@ -109,40 +137,6 @@ RGB565 and for depth 24 and 32 is RGB888.</p>
 GPU acceleration. Specify an empty path to disable DRI3.
 Default is <b>auto</b> which makes <b>Xvnc</b> pick a
 suitable available render node.</p>
-
-<p style="margin-left:9%;"><b>&minus;interface</b> <i>IP
-address</i></p>
-
-<p style="margin-left:18%;">Listen on interface. By default
-Xvnc listens on all available interfaces.</p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="9%"></td>
-<td width="8%">
-
-
-<p><b>&minus;inetd</b></p></td>
-<td width="1%"></td>
-<td width="82%">
-
-
-<p>This significantly changes Xvnc&rsquo;s behaviour so
-that it can be launched from inetd. See the section below on
-usage with inetd.</p></td></tr>
-<tr valign="top" align="left">
-<td width="9%"></td>
-<td width="8%">
-
-
-<p><b>&minus;help</b></p></td>
-<td width="1%"></td>
-<td width="82%">
-
-
-<p>List all the options and parameters</p></td></tr>
-</table>
 
 <h2>PARAMETERS
 <a name="PARAMETERS"></a>
@@ -161,83 +155,10 @@ value</i>. Other valid forms are
 <i>param</i><b>=</b><i>value</i> -<i>param</i>=<i>value</i>
 --<i>param</i>=<i>value</i>. Parameter names are
 case-insensitive. <b><br>
-&minus;desktop</b> <i>desktop-name</i></p>
-
-<p style="margin-left:18%;">Each desktop has a name which
-may be displayed by the viewer. It defaults to
-&quot;&lt;user&gt;@&lt;hostname&gt;&quot;.</p>
-
-<p style="margin-left:9%;"><b>&minus;rfbport</b>
-<i>port</i></p>
-
-<p style="margin-left:18%;">Specifies the TCP port on which
-Xvnc listens for connections from viewers (the protocol used
-in VNC is called RFB - &quot;remote framebuffer&quot;). The
-default is 5900 plus the display number. Specify <b>-1</b>
-to disable listening on a TCP port.</p>
-
-<p style="margin-left:9%;"><b>&minus;UseIPv4</b></p>
-
-<p style="margin-left:18%;">Use IPv4 for incoming and
-outgoing connections. Default is on.</p>
-
-<p style="margin-left:9%;"><b>&minus;UseIPv6</b></p>
-
-<p style="margin-left:18%;">Use IPv6 for incoming and
-outgoing connections. Default is on.</p>
-
-<p style="margin-left:9%;"><b>&minus;rfbunixpath</b>
-<i>path</i></p>
-
-<p style="margin-left:18%;">Specifies the path of a Unix
-domain socket on which Xvnc listens for connections from
-viewers.</p>
-
-<p style="margin-left:9%;"><b>&minus;rfbunixmode</b>
-<i>mode</i></p>
-
-<p style="margin-left:18%;">Specifies the mode of the Unix
-domain socket. The default is 0600.</p>
-
-<p style="margin-left:9%;"><b>&minus;rfbauth</b>
-<i>passwd-file</i><b>, &minus;PasswordFile</b>
-<i>passwd-file</i></p>
-
-<p style="margin-left:18%;">Password file for VNC
-authentication. There is no default, you should specify the
-password file explicitly. Password file should be created
-with the <b>vncpasswd</b>(1) utility. The file is accessed
-each time a connection comes in, so it can be changed on the
-fly.</p>
-
-<p style="margin-left:9%;"><b>&minus;AcceptCutText</b></p>
+&minus;AcceptCutText</b></p>
 
 <p style="margin-left:18%;">Accept clipboard updates from
 clients. Default is on.</p>
-
-<p style="margin-left:9%;"><b>&minus;MaxCutText</b>
-<i>bytes</i></p>
-
-<p style="margin-left:18%;">The maximum size of a clipboard
-update that will be accepted from a client. Default is
-<b>262144</b>.</p>
-
-<p style="margin-left:9%;"><b>&minus;SendCutText</b></p>
-
-<p style="margin-left:18%;">Send clipboard changes to
-clients. Default is on.</p>
-
-<p style="margin-left:9%;"><b>&minus;SendPrimary</b></p>
-
-<p style="margin-left:18%;">Send the primary selection and
-cut buffer to the server as well as the clipboard selection.
-Default is on.</p>
-
-
-<p style="margin-left:9%;"><b>&minus;AcceptPointerEvents</b></p>
-
-<p style="margin-left:18%;">Accept pointer movement and
-button events from clients. Default is on.</p>
 
 
 <p style="margin-left:9%;"><b>&minus;AcceptKeyEvents</b></p>
@@ -246,26 +167,24 @@ button events from clients. Default is on.</p>
 events from clients. Default is on.</p>
 
 
+<p style="margin-left:9%;"><b>&minus;AcceptPointerEvents</b></p>
+
+<p style="margin-left:18%;">Accept pointer movement and
+button events from clients. Default is on.</p>
+
+
 <p style="margin-left:9%;"><b>&minus;AcceptSetDesktopSize</b></p>
 
 <p style="margin-left:18%;">Accept requests to resize the
 size of the desktop. Default is on.</p>
 
+<p style="margin-left:9%;"><b>&minus;AllowOverride</b></p>
 
-<p style="margin-left:9%;"><b>&minus;DisconnectClients</b></p>
-
-<p style="margin-left:18%;">Disconnect existing clients if
-an incoming connection is non-shared. Default is on. If
-<b>DisconnectClients</b> is false, then a new non-shared
-connection will be refused while there is a client active.
-When combined with <b>NeverShared</b> this means only one
-client is allowed at a time.</p>
-
-<p style="margin-left:9%;"><b>&minus;NeverShared</b></p>
-
-<p style="margin-left:18%;">Never treat incoming
-connections as shared, regardless of the client-specified
-setting. Default is off.</p>
+<p style="margin-left:18%;">Comma separated list of
+parameters that can be modified using VNC extension.
+Parameters can be modified for example using
+<b>vncconfig</b>(1) program from inside a running
+session.</p>
 
 <p style="margin-left:9%;"><b>&minus;AlwaysShared</b></p>
 
@@ -273,116 +192,15 @@ setting. Default is off.</p>
 connections as shared, regardless of the client-specified
 setting. Default is off.</p>
 
-<p style="margin-left:9%;"><b>&minus;Protocol3.3</b></p>
 
-<p style="margin-left:18%;">Always use protocol version 3.3
-for backwards compatibility with badly-behaved clients.
-Default is off.</p>
+<p style="margin-left:9%;"><b>&minus;AvoidShiftNumLock</b></p>
 
-<p style="margin-left:9%;"><b>&minus;FrameRate</b>
-<i>fps</i></p>
-
-<p style="margin-left:18%;">The maximum number of updates
-per second sent to each client. If the screen updates any
-faster then those changes will be aggregated and sent in a
-single update to the client. Note that this only controls
-the maximum rate and a client may get a lower rate when
-resources are limited. Default is <b>60</b>.</p>
-
-<p style="margin-left:9%;"><b>&minus;CompareFB</b>
-<i>mode</i></p>
-
-<p style="margin-left:18%;">Perform pixel comparison on
-framebuffer to reduce unnecessary updates. Can be either
-<b>0</b> (off), <b>1</b> (always) or <b>2</b> (auto).
-Default is <b>2</b>.</p>
-
-
-<p style="margin-left:9%;"><b>&minus;ImprovedHextile</b></p>
-
-<p style="margin-left:18%;">Use improved compression
-algorithm for Hextile encoding which achieves better
-compression ratios by the cost of using slightly more CPU
-time. Default is on.</p>
-
-<p style="margin-left:9%;"><b>&minus;SecurityTypes</b>
-<i>sec-types</i></p>
-
-<p style="margin-left:18%;">Specify which security scheme
-to use for incoming connections. Valid values are a comma
-separated list of <b>None</b>, <b>VncAuth</b>, <b>Plain</b>,
-<b>TLSNone</b>, <b>TLSVnc</b>, <b>TLSPlain</b>,
-<b>X509None</b>, <b>X509Vnc</b>, <b>X509Plain</b>,
-<b>RA2</b>, <b>RA2ne</b>, <b>RA2_256</b> and
-<b>RA2ne_256</b>. Default is <b>TLSVnc,VncAuth</b>.</p>
-
-<p style="margin-left:9%;"><b>&minus;Password</b>
-<i>password</i></p>
-
-<p style="margin-left:18%;">Obfuscated binary encoding of
-the password which clients must supply to access the server.
-Using this parameter is insecure, use <b>PasswordFile</b>
-parameter instead.</p>
-
-<p style="margin-left:9%;"><b>&minus;PlainUsers</b>
-<i>user-list</i></p>
-
-<p style="margin-left:18%;">A comma separated list of user
-names that are allowed to authenticate via any of the
-&quot;Plain&quot; security types (Plain, TLSPlain, etc.).
-Specify <b>*</b> to allow any user to authenticate using
-this security type. Specify <b>%u</b> to allow the user of
-the server process. Default is to deny all users.</p>
-
-<p style="margin-left:9%;"><b>&minus;pam_service</b>
-<i>name</i><b>, &minus;PAMService</b> <i>name</i></p>
-
-<p style="margin-left:18%;">PAM service name to use when
-authentication users using any of the &quot;Plain&quot;
-security types. Default is <b>vnc</b>.</p>
-
-<p style="margin-left:9%;"><b>&minus;X509Cert</b>
-<i>path</i></p>
-
-<p style="margin-left:18%;">Path to a X509 certificate in
-PEM format to be used for all X509 based security types
-(X509None, X509Vnc, etc.).</p>
-
-<p style="margin-left:9%;"><b>&minus;X509Key</b>
-<i>path</i></p>
-
-<p style="margin-left:18%;">Private key counter part to the
-certificate given in <b>X509Cert</b>. Must also be in PEM
-format.</p>
-
-<p style="margin-left:9%;"><b>&minus;GnuTLSPriority</b>
-<i>priority</i></p>
-
-<p style="margin-left:18%;">GnuTLS priority string that
-controls the TLS session&acirc;s handshake algorithms. See
-the GnuTLS manual for possible values. For GnuTLS &lt; 3.6.3
-the default value will be <b>NORMAL</b> to use upstream
-default. For newer versions of GnuTLS system-wide crypto
-policy will be used.</p>
-
-<p style="margin-left:9%;"><b>&minus;RSAKey</b>
-<i>path</i></p>
-
-<p style="margin-left:18%;">Path to the RSA key for the
-RSA-AES security types (<b>RA2</b>, <b>RA2ne</b>,
-<b>RA2_256</b> and <b>RA2ne_256</b>) in PEM format.</p>
-
-
-<p style="margin-left:9%;"><b>&minus;RequireUsername</b></p>
-
-<p style="margin-left:18%;">Require username for the
-RSA-AES security types. Default is off.</p>
-
-<p style="margin-left:9%;"><b>&minus;UseBlacklist</b></p>
-
-<p style="margin-left:18%;">Temporarily reject connections
-from a host if it repeatedly fails to authenticate. Default
-is on.</p>
+<p style="margin-left:18%;">Key affected by NumLock often
+require a fake Shift to be inserted in order for the correct
+symbol to be generated. Turning on this option avoids these
+extra fake Shift events but may result in a slightly
+different symbol (e.g. a Return instead of a keypad
+Enter).</p>
 
 
 <p style="margin-left:9%;"><b>&minus;BlacklistThreshold</b>
@@ -400,6 +218,51 @@ when a host is first black-listed. The host cannot
 re-attempt a connection until the timeout expires. Default
 is 10.</p>
 
+<p style="margin-left:9%;"><b>&minus;CompareFB</b>
+<i>mode</i></p>
+
+<p style="margin-left:18%;">Perform pixel comparison on
+framebuffer to reduce unnecessary updates. Can be either
+<b>0</b> (off), <b>1</b> (always) or <b>2</b> (auto).
+Default is <b>2</b>.</p>
+
+<p style="margin-left:9%;"><b>&minus;desktop</b>
+<i>desktop-name</i></p>
+
+<p style="margin-left:18%;">Each desktop has a name which
+may be displayed by the viewer. It defaults to
+&quot;&lt;user&gt;@&lt;hostname&gt;&quot;.</p>
+
+
+<p style="margin-left:9%;"><b>&minus;DisconnectClients</b></p>
+
+<p style="margin-left:18%;">Disconnect existing clients if
+an incoming connection is non-shared. Default is on. If
+<b>DisconnectClients</b> is false, then a new non-shared
+connection will be refused while there is a client active.
+When combined with <b>NeverShared</b> this means only one
+client is allowed at a time.</p>
+
+<p style="margin-left:9%;"><b>&minus;FrameRate</b>
+<i>fps</i></p>
+
+<p style="margin-left:18%;">The maximum number of updates
+per second sent to each client. If the screen updates any
+faster then those changes will be aggregated and sent in a
+single update to the client. Note that this only controls
+the maximum rate and a client may get a lower rate when
+resources are limited. Default is <b>60</b>.</p>
+
+<p style="margin-left:9%;"><b>&minus;GnuTLSPriority</b>
+<i>priority</i></p>
+
+<p style="margin-left:18%;">GnuTLS priority string that
+controls the TLS session&acirc;s handshake algorithms. See
+the GnuTLS manual for possible values. For GnuTLS &lt; 3.6.3
+the default value will be <b>NORMAL</b> to use upstream
+default. For newer versions of GnuTLS system-wide crypto
+policy will be used.</p>
+
 <p style="margin-left:9%;"><b>&minus;IdleTimeout</b>
 <i>seconds</i></p>
 
@@ -408,11 +271,36 @@ which an idle VNC connection will be dropped. Default is 0,
 which means that idle connections will never be dropped.</p>
 
 
-<p style="margin-left:9%;"><b>&minus;MaxDisconnectionTime</b>
-<i>seconds</i></p>
+<p style="margin-left:9%;"><b>&minus;ImprovedHextile</b></p>
 
-<p style="margin-left:18%;">Terminate when no client has
-been connected for <i>N</i> seconds. Default is 0.</p>
+<p style="margin-left:18%;">Use improved compression
+algorithm for Hextile encoding which achieves better
+compression ratios by the cost of using slightly more CPU
+time. Default is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;interface</b> <i>IP
+address</i></p>
+
+<p style="margin-left:18%;">Listen on interface. By default
+Xvnc listens on all available interfaces.</p>
+
+<p style="margin-left:9%;"><b>&minus;localhost</b></p>
+
+<p style="margin-left:18%;">Only allow connections from the
+same machine. Useful if you use SSH and want to stop non-SSH
+connections from any other hosts.</p>
+
+<p style="margin-left:9%;"><b>&minus;Log</b>
+<i>logname</i><b>:</b><i>dest</i><b>:</b><i>level</i><b>[,
+...]</b></p>
+
+<p style="margin-left:18%;">Configures the debug log
+settings. <i>dest</i> can currently be <b>stderr</b>,
+<b>stdout</b> or <b>syslog</b>, and <i>level</i> is between
+0 and 100, 100 meaning most verbose output. <i>logname</i>
+is usually <b>*</b> meaning all, but you can target a
+specific source file if you know the name of its
+&quot;LogWriter&quot;. Default is <b>*:stderr:30</b>.</p>
 
 <p style="margin-left:9%;"><b>&minus;MaxConnectionTime</b>
 <i>seconds</i></p>
@@ -420,11 +308,73 @@ been connected for <i>N</i> seconds. Default is 0.</p>
 <p style="margin-left:18%;">Terminate when a client has
 been connected for <i>N</i> seconds. Default is 0.</p>
 
+<p style="margin-left:9%;"><b>&minus;MaxCutText</b>
+<i>bytes</i></p>
+
+<p style="margin-left:18%;">The maximum size of a clipboard
+update that will be accepted from a client. Default is
+<b>262144</b>.</p>
+
+
+<p style="margin-left:9%;"><b>&minus;MaxDisconnectionTime</b>
+<i>seconds</i></p>
+
+<p style="margin-left:18%;">Terminate when no client has
+been connected for <i>N</i> seconds. Default is 0.</p>
+
 <p style="margin-left:9%;"><b>&minus;MaxIdleTime</b>
 <i>seconds</i></p>
 
 <p style="margin-left:18%;">Terminate after <i>N</i>
 seconds of user inactivity. Default is 0.</p>
+
+<p style="margin-left:9%;"><b>&minus;NeverShared</b></p>
+
+<p style="margin-left:18%;">Never treat incoming
+connections as shared, regardless of the client-specified
+setting. Default is off.</p>
+
+<p style="margin-left:9%;"><b>&minus;pam_service</b>
+<i>name</i><b>, &minus;PAMService</b> <i>name</i></p>
+
+<p style="margin-left:18%;">PAM service name to use when
+authentication users using any of the &quot;Plain&quot;
+security types. Default is <b>vnc</b>.</p>
+
+<p style="margin-left:9%;"><b>&minus;Password</b>
+<i>password</i></p>
+
+<p style="margin-left:18%;">Obfuscated binary encoding of
+the password which clients must supply to access the server.
+Using this parameter is insecure, use <b>PasswordFile</b>
+parameter instead.</p>
+
+<p style="margin-left:9%;"><b>&minus;PasswordFile</b>
+<i>passwd-file</i><b>, &minus;rfbauth</b>
+<i>passwd-file</i></p>
+
+<p style="margin-left:18%;">Password file for VNC
+authentication. There is no default, you should specify the
+password file explicitly. Password file should be created
+with the <b>vncpasswd</b>(1) utility. The file is accessed
+each time a connection comes in, so it can be changed on the
+fly.</p>
+
+<p style="margin-left:9%;"><b>&minus;PlainUsers</b>
+<i>user-list</i></p>
+
+<p style="margin-left:18%;">A comma separated list of user
+names that are allowed to authenticate via any of the
+&quot;Plain&quot; security types (Plain, TLSPlain, etc.).
+Specify <b>*</b> to allow any user to authenticate using
+this security type. Specify <b>%u</b> to allow the user of
+the server process. Default is to deny all users.</p>
+
+<p style="margin-left:9%;"><b>&minus;Protocol3.3</b></p>
+
+<p style="margin-left:18%;">Always use protocol version 3.3
+for backwards compatibility with badly-behaved clients.
+Default is off.</p>
 
 <p style="margin-left:9%;"><b>&minus;QueryConnect</b></p>
 
@@ -441,25 +391,16 @@ in order for QueryConnect to be supported.</p>
 <i>seconds</i></p>
 
 <p style="margin-left:18%;">Number of seconds to show the
-Accept Connection dialog before rejecting the connection.
+Accept connection dialog before rejecting the connection.
 Default is <b>10</b>.</p>
 
-<p style="margin-left:9%;"><b>&minus;localhost</b></p>
+<p style="margin-left:9%;"><b>&minus;RawKeyboard</b></p>
 
-<p style="margin-left:18%;">Only allow connections from the
-same machine. Useful if you use SSH and want to stop non-SSH
-connections from any other hosts.</p>
-
-<p style="margin-left:9%;"><b>&minus;Log</b>
-<i>logname</i><b>:</b><i>dest</i><b>:</b><i>level</i></p>
-
-<p style="margin-left:18%;">Configures the debug log
-settings. <i>dest</i> can currently be <b>stderr</b>,
-<b>stdout</b> or <b>syslog</b>, and <i>level</i> is between
-0 and 100, 100 meaning most verbose output. <i>logname</i>
-is usually <b>*</b> meaning all, but you can target a
-specific source file if you know the name of its
-&quot;LogWriter&quot;. Default is <b>*:stderr:30</b>.</p>
+<p style="margin-left:18%;">Send keyboard events straight
+through and avoid mapping them to the current keyboard
+layout. This effectively makes the keyboard behave according
+to the layout configured on the server instead of the layout
+configured on the client. Default is off.</p>
 
 <p style="margin-left:9%;"><b>&minus;RemapKeys</b>
 <i>mapping</i></p>
@@ -475,30 +416,96 @@ hexadecimal keysym. For example, to exchange the &quot; and
 <p style="margin-left:22%; margin-top: 1em">RemapKeys=0x22&lt;&gt;0x40</p>
 
 
-<p style="margin-left:9%;"><b>&minus;AvoidShiftNumLock</b></p>
+<p style="margin-left:9%;"><b>&minus;RequireUsername</b></p>
 
-<p style="margin-left:18%;">Key affected by NumLock often
-require a fake Shift to be inserted in order for the correct
-symbol to be generated. Turning on this option avoids these
-extra fake Shift events but may result in a slightly
-different symbol (e.g. a Return instead of a keypad
-Enter).</p>
+<p style="margin-left:18%;">Require username for the
+RSA-AES security types. Default is off.</p>
 
-<p style="margin-left:9%;"><b>&minus;RawKeyboard</b></p>
+<p style="margin-left:9%;"><b>&minus;rfbport</b>
+<i>port</i></p>
 
-<p style="margin-left:18%;">Send keyboard events straight
-through and avoid mapping them to the current keyboard
-layout. This effectively makes the keyboard behave according
-to the layout configured on the server instead of the layout
-configured on the client. Default is off.</p>
+<p style="margin-left:18%;">Specifies the TCP port on which
+Xvnc listens for connections from viewers (the protocol used
+in VNC is called RFB - &quot;remote framebuffer&quot;). The
+default is 5900 plus the display number. Specify <b>-1</b>
+to disable listening on a TCP port.</p>
 
-<p style="margin-left:9%;"><b>&minus;AllowOverride</b></p>
+<p style="margin-left:9%;"><b>&minus;rfbunixmode</b>
+<i>mode</i></p>
 
-<p style="margin-left:18%;">Comma separated list of
-parameters that can be modified using VNC extension.
-Parameters can be modified for example using
-<b>vncconfig</b>(1) program from inside a running
-session.</p>
+<p style="margin-left:18%;">Specifies the mode of the Unix
+domain socket. The default is 0600.</p>
+
+<p style="margin-left:9%;"><b>&minus;rfbunixpath</b>
+<i>path</i></p>
+
+<p style="margin-left:18%;">Specifies the path of a Unix
+domain socket on which Xvnc listens for connections from
+viewers.</p>
+
+<p style="margin-left:9%;"><b>&minus;RSAKey</b>
+<i>path</i></p>
+
+<p style="margin-left:18%;">Path to the RSA key for the
+RSA-AES security types (<b>RA2</b>, <b>RA2ne</b>,
+<b>RA2_256</b> and <b>RA2ne_256</b>) in PEM format.</p>
+
+<p style="margin-left:9%;"><b>&minus;SecurityTypes</b>
+<i>sec-types</i></p>
+
+<p style="margin-left:18%;">Specify which security scheme
+to use for incoming connections. Valid values are a comma
+separated list of <b>None</b>, <b>VncAuth</b>, <b>Plain</b>,
+<b>TLSNone</b>, <b>TLSVnc</b>, <b>TLSPlain</b>,
+<b>X509None</b>, <b>X509Vnc</b>, <b>X509Plain</b>,
+<b>RA2</b>, <b>RA2ne</b>, <b>RA2_256</b> and
+<b>RA2ne_256</b>. Default is <b>TLSVnc,VncAuth</b>.</p>
+
+<p style="margin-left:9%;"><b>&minus;SendCutText</b></p>
+
+<p style="margin-left:18%;">Send clipboard changes to
+clients. Default is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;SendPrimary</b></p>
+
+<p style="margin-left:18%;">Send the primary selection and
+cut buffer to the server as well as the clipboard selection.
+Default is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;SetPrimary</b></p>
+
+<p style="margin-left:18%;">Set the primary selection as
+well as the clipboard selection. Default is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;UseBlacklist</b></p>
+
+<p style="margin-left:18%;">Temporarily reject connections
+from a host if it repeatedly fails to authenticate. Default
+is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;UseIPv4</b></p>
+
+<p style="margin-left:18%;">Use IPv4 for incoming and
+outgoing connections. Default is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;UseIPv6</b></p>
+
+<p style="margin-left:18%;">Use IPv6 for incoming and
+outgoing connections. Default is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;X509Cert</b>
+<i>path</i></p>
+
+<p style="margin-left:18%;">Path to a X509 certificate in
+PEM format to be used for all X509 based security types
+(X509None, X509Vnc, etc.).</p>
+
+<p style="margin-left:9%;"><b>&minus;X509Key</b>
+<i>path</i></p>
+
+<p style="margin-left:18%;">Private key counter part to the
+certificate given in <b>X509Cert</b>. Must also be in PEM
+format.</p>
 
 <p style="margin-left:18%; margin-top: 1em">Allowing
 override of parameters such as <b>PAMService</b> or
@@ -548,9 +555,9 @@ localhost -once securitytypes=none</p>
 <p style="margin-left:9%; margin-top: 1em">In this example
 a viewer connection to :50 will result in a new Xvnc for
 that connection which should display the standard XDM login
-screen on that machine. Because the user needs to login via
-XDM, it is usually OK to accept connections without a VNC
-password in this case.</p>
+screen on that machine. It is usually OK to accept
+connections without a VNC password, since the user still
+needs to log in via XDM in this case.</p>
 
 <p style="margin-left:9%; margin-top: 1em">In the wait
 mode, when the first connection comes in, inetd gives the
