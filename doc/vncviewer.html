@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.23.0 -->
-<!-- CreationDate: Mon Feb 17 10:38:36 2025 -->
+<!-- CreationDate: Fri Jan 23 11:29:17 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -126,78 +126,47 @@ color mode changes safely.</p>
 selection can be turned off by setting the <b>AutoSelect</b>
 parameter to false, or from the options dialog.</p>
 
-<h2>POPUP MENU
-<a name="POPUP MENU"></a>
+<h2>KEYBOARD SHORTCUTS
+<a name="KEYBOARD SHORTCUTS"></a>
 </h2>
 
 
-<p style="margin-left:9%; margin-top: 1em">The viewer has a
-popup menu containing entries which perform various actions.
-It is usually brought up by pressing F8, but this can be
-configured with the MenuKey parameter. Actions which the
-popup menu can perform include:</p>
+<p style="margin-left:9%; margin-top: 1em">The viewer can
+be controlled using certain key combinations, invoking
+special actions instead of passing the keyboard events on to
+the remote session. By default pressing Ctrl+Alt and
+something else will be interpreted as a keyboard shortcut
+for the viewer, but this can be changed witht the
+<b>ShortcutModifiers</b> parameter.</p>
 
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="12%"></td>
-<td width="1%">
+<p style="margin-left:9%; margin-top: 1em">The possible
+keyboard shortcuts are: <br>
+Ctrl+Alt</p>
 
+<p style="margin-left:18%;">Releases control of the
+keyboard and allows system keys to be used locally.</p>
 
-<p>*</p></td>
-<td width="1%"></td>
-<td width="69%">
+<p style="margin-left:9%;">Ctrl+Alt+G</p>
 
+<p style="margin-left:18%;">Grabs control of the keyboard
+and allows system keys (like Alt+Tab) to be sent to the
+remote session.</p>
 
-<p>switching in and out of full-screen mode</p></td>
-<td width="17%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="12%"></td>
-<td width="1%">
+<p style="margin-left:9%;">Ctrl+Alt+Enter</p>
 
+<p style="margin-left:18%;">Toggles full-screen mode.</p>
 
-<p>*</p></td>
-<td width="1%"></td>
-<td width="69%">
+<p style="margin-left:9%;">Ctrl+Alt+M</p>
 
+<p style="margin-left:18%;">Opens a popup menu that can
+perform various extra actions, such as quitting the viewer
+or opening the options dialog.</p>
 
-<p>quitting the viewer</p></td>
-<td width="17%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="12%"></td>
-<td width="1%">
+<p style="margin-left:9%;">Ctrl+Alt+Space</p>
 
-
-<p>*</p></td>
-<td width="1%"></td>
-<td width="69%">
-
-
-<p>generating key events, e.g. sending ctrl-alt-del</p></td>
-<td width="17%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="12%"></td>
-<td width="1%">
-
-
-<p>*</p></td>
-<td width="1%"></td>
-<td width="69%">
-
-
-<p>accessing the options dialog and various other
-dialogs</p> </td>
-<td width="17%">
-</td></tr>
-</table>
-
-<p style="margin-left:9%; margin-top: 1em">By default, key
-presses in the popup menu get sent to the VNC server and
-dismiss the popup. So to get an F8 through to the VNC server
-simply press it twice.</p>
+<p style="margin-left:18%;">Temporarily bypasses the
+keyboard shortcuts, allowing the same key combinations to be
+sent to the remote session.</p>
 
 <h2>FULL-SCREEN MODE
 <a name="FULL-SCREEN MODE"></a>
@@ -270,8 +239,8 @@ AlwaysCursor is off. The default is &quot;Dot&quot;.</p>
 
 <p style="margin-left:9%;"><b>&minus;CustomCompressLevel</b></p>
 
-<p style="margin-left:18%;">Use custom compression level.
-Default if <b>CompressLevel</b> is specified.</p>
+<p style="margin-left:18%;">Use custom compression level as
+specified by <b>CompressLevel</b>. Default is off.</p>
 
 <p style="margin-left:9%;"><b>&minus;DesktopSize</b>
 <i>width</i><b>x</b><i>height</i></p>
@@ -286,7 +255,7 @@ retain the original size.</p>
 <i>Xdisplay</i></p>
 
 <p style="margin-left:18%;">Specifies the X display on
-which the VNC viewer window should appear.</p>
+which the TigerVNC window should appear.</p>
 
 <p style="margin-left:9%;"><b>&minus;DotWhenNoCursor
 (DEPRECATED)</b></p>
@@ -344,15 +313,15 @@ should be used. The default is &quot;1&quot;.</p>
 
 <p style="margin-left:9%;"><b>&minus;FullscreenSystemKeys</b></p>
 
-<p style="margin-left:18%;">Pass special keys (like
-Alt+Tab) directly to the server when in full-screen
-mode.</p>
+<p style="margin-left:18%;">Automatically grab all input
+from the keyboard when entering full-screen and pass special
+keys (like Alt+Tab) directly to the server.</p>
 
 <p style="margin-left:9%;"><b>&minus;geometry</b>
 <i>geometry</i></p>
 
 <p style="margin-left:18%;">Initial position of the main
-VNC viewer window. The format is
+TigerVNC window. The format is
 <i>width</i><b>x</b><i>height</i><b>+</b><i>xoffset</i><b>+</b><i>yoffset</i>
 , where &lsquo;+&rsquo; signs can be replaced with
 &lsquo;&minus;&rsquo; signs to specify offsets from the
@@ -413,19 +382,10 @@ update that will be accepted from a server. Default is
 
 <p style="margin-left:18%;">Maximize viewer window.</p>
 
-<p style="margin-left:9%;"><b>&minus;MenuKey</b>
-<i>keysym-name</i></p>
-
-<p style="margin-left:18%;">This option specifies the key
-which brings up the popup menu. The currently supported list
-is: F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12,
-Pause, Scroll_Lock, Escape, Insert, Delete, Home, Page_Up,
-Page_Down). Default is F8.</p>
-
 <p style="margin-left:9%;"><b>&minus;NoJpeg</b></p>
 
-<p style="margin-left:18%;">Disable lossy JPEG compression
-in Tight encoding. Default is off.</p>
+<p style="margin-left:18%;">Disable lossy JPEG compression.
+Default is off.</p>
 
 <p style="margin-left:9%;"><b>&minus;passwd,
 &minus;PasswordFile</b> <i>password-file</i></p>
@@ -450,8 +410,8 @@ Hz).</p>
 
 <p style="margin-left:18%;">This option specifies the
 preferred encoding to use from one of &quot;Tight&quot;,
-&quot;ZRLE&quot;, &quot;hextile&quot; or
-&quot;raw&quot;.</p>
+&quot;JPEG&quot;, &quot;ZRLE&quot;, &quot;Hextile&quot;,
+&quot;H.264&quot;, or &quot;Raw&quot;.</p>
 
 <p style="margin-left:9%;"><b>&minus;QualityLevel</b>
 <i>level</i></p>
@@ -509,6 +469,15 @@ VNC server, all other existing connections are normally
 closed. This option requests that they be left open,
 allowing you to share the desktop with someone already using
 it.</p>
+
+<p style="margin-left:9%;"><b>&minus;ShortcutModifiers</b>
+<i>keys</i></p>
+
+<p style="margin-left:18%;">The combination of modifier
+keys that triggers special actions in the viewer instead of
+being sent to the remote session. Possible values are a
+combination of <b>Ctrl</b>, <b>Shift</b>, <b>Alt</b>, and
+<b>Super</b>. Default is <b>Ctrl,Alt</b>.</p>
 
 <p style="margin-left:9%;"><b>&minus;UseIPv4</b></p>
 

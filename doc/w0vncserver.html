@@ -1,0 +1,435 @@
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Fri Jan 23 11:29:36 2026 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>w0vncserver</title>
+
+</head>
+<body>
+
+<h1 align="center">w0vncserver</h1>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">w0vncserver
+&minus; TigerVNC server for Wayland compositors</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>w0vncserver</b>
+[<i>options</i>] <b><br>
+w0vncserver -version</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>w0vncserver</b>
+is a TigerVNC server which makes a Wayland compositor that
+is based on wlroots, or has the RemoteDesktop portal
+implemented, remotely accessible via VNC, TigerVNC or
+compatible viewers. It does not create a virtual display,
+instead, it shares an existing display (typically, hat one
+connected to the physical screen).</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>w0vncserver</b>
+interprets the command line as a list of parameters with
+optional values. Running <b>w0vncserver &minus;h</b> will
+show a list of all valid parameters with short descriptions.
+All parameters are optional, but normally you would have to
+use the <b>PasswordFile</b> parameter (see its description
+below).</p>
+
+<p style="margin-left:9%; margin-top: 1em">There are
+several forms of specifying parameters in the command line
+(here we use &lsquo;<i>SomeParameter</i>&rsquo; as an
+example parameter name): <b><br>
+-</b><i>SomeParameter</i></p>
+
+<p style="margin-left:18%;">Enable the parameter, turn the
+feature on. This form can be used with parameters that
+simply enable or disable some feature.</p>
+
+
+<p style="margin-left:9%;"><b>-</b><i>SomeParameter</i><b>=0</b></p>
+
+<p style="margin-left:18%;">Disable the parameter, turn the
+feature off.</p>
+
+
+<p style="margin-left:9%;"><b>-</b><i>SomeParameter</i><b>=</b><i>value</i></p>
+
+<p style="margin-left:18%;">Assign the specified
+<i>value</i> to the parameter. The leading dash can be
+omitted, or it can be doubled if desired (like in GNU-style
+long options).</p>
+
+<p style="margin-left:9%; margin-top: 1em">Parameter names
+are case-insensitive, their order in the command line can be
+arbitrary.</p>
+
+<h2>PARAMETERS
+<a name="PARAMETERS"></a>
+</h2>
+
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>&minus;AcceptKeyEvents</b></p>
+
+<p style="margin-left:18%;">Accept key press and release
+events from clients. Default is on.</p>
+
+
+<p style="margin-left:9%;"><b>&minus;AcceptPointerEvents</b></p>
+
+<p style="margin-left:18%;">Accept pointer movement and
+button events from clients. Default is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;AlwaysShared</b></p>
+
+<p style="margin-left:18%;">Always treat incoming
+connections as shared, regardless of the client-specified
+setting. Default is off.</p>
+
+
+<p style="margin-left:9%;"><b>&minus;BlacklistThreshold</b>
+<i>count</i></p>
+
+<p style="margin-left:18%;">The number of unauthenticated
+connection attempts allowed from any individual host before
+that host is black-listed. Default is 5.</p>
+
+<p style="margin-left:9%;"><b>&minus;BlacklistTimeout</b>
+<i>seconds</i></p>
+
+<p style="margin-left:18%;">The initial timeout applied
+when a host is first black-listed. The host cannot
+re-attempt a connection until the timeout expires. Default
+is 10.</p>
+
+<p style="margin-left:9%;"><b>&minus;CompareFB</b>
+<i>mode</i></p>
+
+<p style="margin-left:18%;">Perform pixel comparison on
+framebuffer to reduce unnecessary updates. Can be either
+<b>0</b> (off), <b>1</b> (always) or <b>2</b> (auto).
+Default is <b>2</b>.</p>
+
+<p style="margin-left:9%;"><b>&minus;desktop</b>
+<i>desktop-name</i></p>
+
+<p style="margin-left:18%;">Each desktop has a name which
+may be displayed by the viewer. It defaults to
+&quot;&lt;user&gt;@&lt;hostname&gt;&quot;.</p>
+
+
+<p style="margin-left:9%;"><b>&minus;DisconnectClients</b></p>
+
+<p style="margin-left:18%;">Disconnect existing clients if
+an incoming connection is non-shared. Default is on. If
+<b>DisconnectClients</b> is false, then a new non-shared
+connection will be refused while there is a client active.
+When combined with <b>NeverShared</b> this means only one
+client is allowed at a time.</p>
+
+<p style="margin-left:9%;"><b>&minus;FrameRate</b>
+<i>fps</i></p>
+
+<p style="margin-left:18%;">The maximum number of updates
+per second sent to each client. If the screen updates any
+faster then those changes will be aggregated and sent in a
+single update to the client. Note that this only controls
+the maximum rate and a client may get a lower rate when
+resources are limited. Default is <b>60</b>.</p>
+
+<p style="margin-left:9%;"><b>&minus;GnuTLSPriority</b>
+<i>priority</i></p>
+
+<p style="margin-left:18%;">GnuTLS priority string that
+controls the TLS session&acirc;s handshake algorithms. See
+the GnuTLS manual for possible values. Default is
+<b>NORMAL</b>.</p>
+
+<p style="margin-left:9%;"><b>&minus;IdleTimeout</b>
+<i>seconds</i></p>
+
+<p style="margin-left:18%;">The number of seconds after
+which an idle VNC connection will be dropped. Default is 0,
+which means that idle connections will never be dropped.</p>
+
+
+<p style="margin-left:9%;"><b>&minus;ImprovedHextile</b></p>
+
+<p style="margin-left:18%;">Use improved compression
+algorithm for Hextile encoding which achieves better
+compression ratios by the cost of using slightly more CPU
+time. Default is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;interface</b> <i>IP
+address</i></p>
+
+<p style="margin-left:18%;">Listen on interface. By default
+w0vncserver listens on all available interfaces.</p>
+
+<p style="margin-left:9%;"><b>&minus;localhost</b></p>
+
+<p style="margin-left:18%;">Only allow connections from the
+same machine. Useful if you use SSH and want to stop non-SSH
+connections from any other hosts.</p>
+
+<p style="margin-left:9%;"><b>&minus;Log</b>
+<i>logname</i><b>:</b><i>dest</i><b>:</b><i>level</i><b>[,
+...]</b></p>
+
+<p style="margin-left:18%;">Configures the debug log
+settings. <i>dest</i> can currently be <b>stderr</b>,
+<b>stdout</b> or <b>syslog</b>, and <i>level</i> is between
+0 and 100, 100 meaning most verbose output. <i>logname</i>
+is usually <b>*</b> meaning all, but you can target a
+specific source file if you know the name of its
+&quot;LogWriter&quot;. Default is <b>*:stderr:30</b>.</p>
+
+<p style="margin-left:9%;"><b>&minus;MaxConnectionTime</b>
+<i>seconds</i></p>
+
+<p style="margin-left:18%;">Terminate when a client has
+been connected for <i>N</i> seconds. Default is 0.</p>
+
+
+<p style="margin-left:9%;"><b>&minus;MaxDisconnectionTime</b>
+<i>seconds</i></p>
+
+<p style="margin-left:18%;">Terminate when no client has
+been connected for <i>N</i> seconds. Default is 0.</p>
+
+<p style="margin-left:9%;"><b>&minus;MaxIdleTime</b>
+<i>seconds</i></p>
+
+<p style="margin-left:18%;">Terminate after <i>N</i>
+seconds of user inactivity. Default is 0.</p>
+
+<p style="margin-left:9%;"><b>&minus;NeverShared</b></p>
+
+<p style="margin-left:18%;">Never treat incoming
+connections as shared, regardless of the client-specified
+setting. Default is off.</p>
+
+<p style="margin-left:9%;"><b>&minus;pam_service</b>
+<i>name</i><b>, &minus;PAMService</b> <i>name</i></p>
+
+<p style="margin-left:18%;">PAM service name to use when
+authentication users using any of the &quot;Plain&quot;
+security types. Default is <b>vnc</b>.</p>
+
+<p style="margin-left:9%;"><b>&minus;Password</b>
+<i>password</i></p>
+
+<p style="margin-left:18%;">Obfuscated binary encoding of
+the password which clients must supply to access the server.
+Using this parameter is insecure, use <b>PasswordFile</b>
+parameter instead.</p>
+
+<p style="margin-left:9%;"><b>&minus;PasswordFile</b>
+<i>passwd-file</i><b>, &minus;rfbauth</b>
+<i>passwd-file</i></p>
+
+<p style="margin-left:18%;">Password file for VNC
+authentication. There is no default, you should specify the
+password file explicitly. Password file should be created
+with the <b>vncpasswd</b>(1) utility. The file is accessed
+each time a connection comes in, so it can be changed on the
+fly.</p>
+
+<p style="margin-left:9%;"><b>&minus;PlainUsers</b>
+<i>user-list</i></p>
+
+<p style="margin-left:18%;">A comma separated list of user
+names that are allowed to authenticate via any of the
+&quot;Plain&quot; security types (Plain, TLSPlain, etc.).
+Specify <b>*</b> to allow any user to authenticate using
+this security type. Specify <b>%u</b> to allow the user of
+the server process. Default is to deny all users.</p>
+
+<p style="margin-left:9%;"><b>&minus;Protocol3.3</b></p>
+
+<p style="margin-left:18%;">Always use protocol version 3.3
+for backwards compatibility with badly-behaved clients.
+Default is off.</p>
+
+<p style="margin-left:9%;"><b>&minus;QueryConnect</b></p>
+
+<p style="margin-left:18%;">Prompts the user of the desktop
+to explicitly accept or reject incoming connections. Default
+is off.</p>
+
+<p style="margin-left:9%;"><b>&minus;RawKeyboard</b></p>
+
+<p style="margin-left:18%;">Send keyboard events straight
+through and avoid mapping them to the current keyboard
+layout. This effectively makes the keyboard behave according
+to the layout configured on the server instead of the layout
+configured on the client. Default is off.</p>
+
+<p style="margin-left:9%;"><b>&minus;RemapKeys</b>
+<i>mapping</i></p>
+
+<p style="margin-left:18%;">Sets up a keyboard mapping.
+<i>mapping</i> is a comma-separated string of character
+mappings, each of the form <i>char</i>-&gt;<i>char</i>, or
+<i>char</i>&lt;&gt;<i>char</i>, where <i>char</i> is a
+hexadecimal keysym. For example, to exchange the &quot; and
+@ symbols you would specify the following:</p>
+
+
+<p style="margin-left:22%; margin-top: 1em">RemapKeys=0x22&lt;&gt;0x40</p>
+
+
+<p style="margin-left:9%;"><b>&minus;RememberDisplayChoice</b>
+<i>mode</i></p>
+
+<p style="margin-left:18%;">Remember display choice when a
+user connects. Can be either <b>Always</b>, <b>Never</b>, or
+<b>Session</b>. Choosing <b>Never</b> means a prompt dialog
+will be be shown every time a user connects to the server.
+<b>Session</b> means a prompt will be shown only once during
+the program&rsquo;s lifetime. When choosing <b>Always</b>,
+the choice you make will be remembered and persist. To reset
+your choice, see <b>w0vncserver-forget</b>(1). Default is
+<b>Session</b>.</p>
+
+
+<p style="margin-left:9%;"><b>&minus;RequireUsername</b></p>
+
+<p style="margin-left:18%;">Require username for the
+RSA-AES security types. Default is off.</p>
+
+<p style="margin-left:9%;"><b>&minus;rfbport</b>
+<i>port</i></p>
+
+<p style="margin-left:18%;">Specifies the TCP port on which
+w0vncserver listens for connections from viewers (the
+protocol used in VNC is called RFB - &quot;remote
+framebuffer&quot;). Specify <b>-1</b> to disable listening
+on a TCP port. The default port is 5900 when started
+directly, and -1 when activated by a systemd socket.</p>
+
+<p style="margin-left:9%;"><b>&minus;rfbunixmode</b>
+<i>mode</i></p>
+
+<p style="margin-left:18%;">Specifies the mode of the Unix
+domain socket. The default is 0600.</p>
+
+<p style="margin-left:9%;"><b>&minus;rfbunixpath</b>
+<i>path</i></p>
+
+<p style="margin-left:18%;">Specifies the path of a Unix
+domain socket on which w0vncserver listens for connections
+from viewers. Default is to not listen to any Unix domain
+socket.</p>
+
+<p style="margin-left:9%;"><b>&minus;RSAKey</b>
+<i>path</i></p>
+
+<p style="margin-left:18%;">Path to the RSA key for the
+RSA-AES security types (<b>RA2</b>, <b>RA2ne</b>,
+<b>RA2_256</b> and <b>RA2ne_256</b>) in PEM format.</p>
+
+<p style="margin-left:9%;"><b>&minus;SecurityTypes</b>
+<i>sec-types</i></p>
+
+<p style="margin-left:18%;">Specify which security scheme
+to use for incoming connections. Valid values are a comma
+separated list of <b>None</b>, <b>VncAuth</b>, <b>Plain</b>,
+<b>TLSNone</b>, <b>TLSVnc</b>, <b>TLSPlain</b>,
+<b>X509None</b>, <b>X509Vnc</b>, <b>X509Plain</b>,
+<b>RA2</b>, <b>RA2ne</b>, <b>RA2_256</b> and
+<b>RA2ne_256</b>. Default is <b>TLSVnc,VncAuth</b>.</p>
+
+<p style="margin-left:9%;"><b>&minus;UseBlacklist</b></p>
+
+<p style="margin-left:18%;">Temporarily reject connections
+from a host if it repeatedly fails to authenticate. Default
+is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;UseIPv4</b></p>
+
+<p style="margin-left:18%;">Use IPv4 for incoming and
+outgoing connections. Default is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;UseIPv6</b></p>
+
+<p style="margin-left:18%;">Use IPv6 for incoming and
+outgoing connections. Default is on.</p>
+
+<p style="margin-left:9%;"><b>&minus;X509Cert</b>
+<i>path</i></p>
+
+<p style="margin-left:18%;">Path to a X509 certificate in
+PEM format to be used for all X509 based security types
+(X509None, X509Vnc, etc.).</p>
+
+<p style="margin-left:9%;"><b>&minus;X509Key</b>
+<i>path</i></p>
+
+<p style="margin-left:18%;">Private key counter part to the
+certificate given in <b>X509Cert</b>. Must also be in PEM
+format.</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:9%; margin-top: 1em"><b>w0vncserver-forget</b>(1),
+<b>x0vncserver</b>(1), <b>Xvnc</b>(1), <b>vncpasswd</b>(1),
+<br>
+https://www.tigervnc.org/</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">TigerVNC
+Team</p>
+
+<p style="margin-left:9%; margin-top: 1em">VNC was
+originally developed by the RealVNC team while at Olivetti
+Research Ltd / AT&amp;T Laboratories Cambridge. TightVNC
+additions were implemented by Constantin Kaplinsky. Many
+other people have since participated in development, testing
+and support. This manual is part of the TigerVNC software
+suite.</p>
+<hr>
+</body>
+</html>
